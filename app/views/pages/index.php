@@ -22,7 +22,7 @@
             </div>
             <div class="flex flex-row gap-4">
                 <div>
-                    <b><a href="View/allproduct.php">categorie</a></b>
+                    <b><a href="<?= URLROOT ;?>/pages/product">categorie</a></b>
                 </div>
                 <div>
                     <b><a href="View/Contact.php">Contact Us</a></b>
@@ -35,7 +35,7 @@
         </div>
         <div class="icons">
             <div class="icon-item">
-                <a href="<?php echo URLROOT; ?>/login.php">
+                <a href=" <?= URLROOT; ?>/autho/login">
                     <i class="fa-solid fa-user"></i>
                 </a>
             </div>

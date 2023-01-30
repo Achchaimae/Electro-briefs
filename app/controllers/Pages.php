@@ -17,8 +17,14 @@
         'title' => 'Product',
       ];
 
-      $this->view('pages/about', $data);
+      $this->view('pages/product', $data);
     }
-    
+    public function dashboard(){
+      $data = [
+        'title' => 'Dashboard',
+      ];
+
+      $this->view('pages/admin/dashboard', $data);
+    }
     
   }

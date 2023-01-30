@@ -1,5 +1,4 @@
 <?php
-
 class Autho extends Controller{
     public $loginmodels;
     public function __construct(){
