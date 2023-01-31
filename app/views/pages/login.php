@@ -1,6 +1,6 @@
 <?php
 if (!isset($_SESSION['email'])) {
-  echo "You are not logged in";
+  // echo "You are not logged in";
 } else {
   header('Location: ../View/Dashbord.php');
 }
@@ -302,7 +302,7 @@ if (!isset($_SESSION['email'])) {
   <section class="m-auto">
     <div class="container" id="container">
       <div class="form-container sign-up-container">
-        <form action="../index.php" method="POST">
+        <form action="#" method="POST">
           <h1>Create Account</h1>
           <div class="social-container">
             <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -316,8 +316,11 @@ if (!isset($_SESSION['email'])) {
           <button>Sign Up</button>
         </form>
       </div>
+
+
+
       <div class="form-container sign-in-container">
-        <form action="../index.php" method="POST">
+        <form action="<?php echo URLROOT ;?>/Autho/login" method="POST">
           <h1>Sign in</h1>
           <div class="social-container">
             <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -330,7 +333,7 @@ if (!isset($_SESSION['email'])) {
           <input type="password" placeholder="Password" name="password" />
           <a href="#">Forgot your password?</a>
 
-          <button name="login" value="Login">Sign In</button>
+          <button type="submit" name="login" value="Login" class="bg-blue-800">Sign In</button>
         </form>
       </div>
       <div class=" overlay-container">

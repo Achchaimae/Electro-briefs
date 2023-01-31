@@ -17,9 +17,6 @@
 </head>
 
 <body>
-    <style>
-
-    </style>
     <div x-data="setup()" :class="{ 'dark': isDark }">
         <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
 
@@ -316,234 +313,80 @@
                                 </tbody>
                             </table>
                         </div>
-                        <span class="ml-2 text-gray-500 font-bold tracking-wide truncate ">Products</span>
-                        <div class="flex items-center justify-center ">
-                            <div class="col-span-12">
-                                <div class="overflow-auto lg:overflow-visible ">
-                                    <table class="table text-gray-400 border-separate space-y-6 text-sm">
-                                        <thead class="bg-gray-800 text-gray-500">
-                                            <tr>
-                                                <th class="p-3">Brand</th>
-                                                <th class="p-3 text-left">Category</th>
-                                                <th class="p-3 text-left">Price</th>
-                                                <th class="p-3 text-left">Status</th>
-                                                <th class="p-3 text-left">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="bg-gray-800">
-                                                <td class="p-3">
-                                                    <div class="flex align-items-center">
-                                                        <img class="rounded-full h-12 w-12  object-cover" src="https://images.unsplash.com/photo-1613588718956-c2e80305bf61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80" alt="unsplash image">
-                                                        <div class="ml-3">
-                                                            <div class="">Appple</div>
-                                                            <div class="text-gray-500">mail@rgmail.com</div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="p-3">
-                                                    Technology
-                                                </td>
-                                                <td class="p-3 font-bold">
-                                                    200.00$
-                                                </td>
-                                                <td class="p-3">
-                                                    <span class="bg-green-400 text-gray-50 rounded-md px-2">available</span>
-                                                </td>
-                                                <td class="p-3 ">
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-                                                        <i class="material-icons-outlined text-base">visibility</i>
-                                                    </a>
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100  mx-2">
-                                                        <i class="material-icons-outlined text-base">edit</i>
-                                                    </a>
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100  ml-2">
-                                                        <i class="material-icons-round text-base">delete_outline</i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr class="bg-gray-800">
-                                                <td class="p-3">
-                                                    <div class="flex align-items-center">
-                                                        <img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1423784346385-c1d4dac9893a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="unsplash image">
-                                                        <div class="ml-3">
-                                                            <div class="">Realme</div>
-                                                            <div class="text-gray-500">mail@rgmail.com</div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="p-3">
-                                                    Technology
-                                                </td>
-                                                <td class="p-3 font-bold">
-                                                    200.00$
-                                                </td>
-                                                <td class="p-3">
-                                                    <span class="bg-red-400 text-gray-50 rounded-md px-2">no stock</span>
-                                                </td>
-                                                <td class="p-3">
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100  mr-2">
-                                                        <i class="material-icons-outlined text-base">visibility</i>
-                                                    </a>
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100 mx-2">
-                                                        <i class="material-icons-outlined text-base">edit</i>
-                                                    </a>
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100 ml-2">
-                                                        <i class="material-icons-round text-base">delete_outline</i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr class="bg-gray-800">
-                                                <td class="p-3">
-                                                    <div class="flex align-items-center">
-                                                        <img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1600856209923-34372e319a5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2135&q=80" alt="unsplash image">
-                                                        <div class="ml-3">
-                                                            <div class="">Samsung</div>
-                                                            <div class="text-gray-500">mail@rgmail.com</div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="p-3">
-                                                    Technology
-                                                </td>
-                                                <td class="p-3 font-bold">
-                                                    200.00$
-                                                </td>
-                                                <td class="p-3">
-                                                    <span class="bg-yellow-400 text-gray-50  rounded-md px-2">start sale</span>
-                                                </td>
-                                                <td class="p-3">
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-                                                        <i class="material-icons-outlined text-base">visibility</i>
-                                                    </a>
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100 mx-2">
-                                                        <i class="material-icons-outlined text-base">edit</i>
-                                                    </a>
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100 ml-2">
-                                                        <i class="material-icons-round text-base">delete_outline</i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <span class="ml-2 text-gray-500 font-bold tracking-wide truncate ">Categories</span>
-                        <div class="flex items-center justify-center ">
-                            <div class="col-span-12">
-                                <div class="overflow-auto lg:overflow-visible ">
-                                    <table class="table text-gray-400 border-separate space-y-6 text-sm">
-                                        <thead class="bg-gray-800 text-gray-500">
-                                            <tr>
-                                                <th class="p-3">Categories</th>
-                                                <th class="p-3 text-left">Category</th>
-                                                <th class="p-3 text-left">Price</th>
-                                                <th class="p-3 text-left">Status</th>
-                                                <th class="p-3 text-left">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="bg-gray-800">
-                                                <td class="p-3">
-                                                    <div class="flex align-items-center">
-                                                        <img class="rounded-full h-12 w-12  object-cover" src="https://images.unsplash.com/photo-1613588718956-c2e80305bf61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80" alt="unsplash image">
-                                                        <div class="ml-3">
-                                                            <div class="">Appple</div>
-                                                            <div class="text-gray-500">mail@rgmail.com</div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="p-3">
-                                                    Technology
-                                                </td>
-                                                <td class="p-3 font-bold">
-                                                    200.00$
-                                                </td>
-                                                <td class="p-3">
-                                                    <span class="bg-green-400 text-gray-50 rounded-md px-2">available</span>
-                                                </td>
-                                                <td class="p-3 ">
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-                                                        <i class="material-icons-outlined text-base">visibility</i>
-                                                    </a>
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100  mx-2">
-                                                        <i class="material-icons-outlined text-base">edit</i>
-                                                    </a>
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100  ml-2">
-                                                        <i class="material-icons-round text-base">delete_outline</i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr class="bg-gray-800">
-                                                <td class="p-3">
-                                                    <div class="flex align-items-center">
-                                                        <img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1423784346385-c1d4dac9893a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="unsplash image">
-                                                        <div class="ml-3">
-                                                            <div class="">Realme</div>
-                                                            <div class="text-gray-500">mail@rgmail.com</div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="p-3">
-                                                    Technology
-                                                </td>
-                                                <td class="p-3 font-bold">
-                                                    200.00$
-                                                </td>
-                                                <td class="p-3">
-                                                    <span class="bg-red-400 text-gray-50 rounded-md px-2">no stock</span>
-                                                </td>
-                                                <td class="p-3">
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100  mr-2">
-                                                        <i class="material-icons-outlined text-base">visibility</i>
-                                                    </a>
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100 mx-2">
-                                                        <i class="material-icons-outlined text-base">edit</i>
-                                                    </a>
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100 ml-2">
-                                                        <i class="material-icons-round text-base">delete_outline</i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr class="bg-gray-800">
-                                                <td class="p-3">
-                                                    <div class="flex align-items-center">
-                                                        <img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1600856209923-34372e319a5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2135&q=80" alt="unsplash image">
-                                                        <div class="ml-3">
-                                                            <div class="">Samsung</div>
-                                                            <div class="text-gray-500">mail@rgmail.com</div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="p-3">
-                                                    Technology
-                                                </td>
-                                                <td class="p-3 font-bold">
-                                                    200.00$
-                                                </td>
-                                                <td class="p-3">
-                                                    <span class="bg-yellow-400 text-gray-50  rounded-md px-2">start sale</span>
-                                                </td>
-                                                <td class="p-3">
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-                                                        <i class="material-icons-outlined text-base">visibility</i>
-                                                    </a>
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100 mx-2">
-                                                        <i class="material-icons-outlined text-base">edit</i>
-                                                    </a>
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100 ml-2">
-                                                        <i class="material-icons-round text-base">delete_outline</i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                       
+                       
                     </div>
                 </div>
+                <!-- commande table -->
+                <div class="overflow-x-auto relative shadow-md sm:rounded-lg m-4">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="py-3 px-6">
+                           Date creation 
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            client
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Category
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Price
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            total price
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Action
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                
+                    <tbody>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <td class="py-4 px-6">
+                            date de creation
+                            </td>
+                            <td scope="row" class="py-4 px-6 font-medium text-gray-900 wditespace-nowrap dark:text-white">
+                               client
+                            </td>
+
+                            <td class="py-4 px-6">
+                                quantite
+                            </td>
+
+                            <td class="py-4 px-6">
+                              prix uniti
+                            </td>
+                            <td class="py-4 px-6">
+                                total
+                            </td>
+                            <td class="py-4 px-6">
+                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Accept</a>
+                            </td>
+                            <td class="py-4 px-6">
+                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Refuse</a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                    
+            </table>
+            <!-- <button class="add-btn  "><a href="Ajouter.php">ajouter</a></button> -->
+            
+        </div>
+
+        </tbody>
+    
+    
+
+    </table>
+    </div>
+    <!-- end commande table -->
                 <!-- ./Client Table -->
 
                 <!-- Contact Form -->
@@ -657,7 +500,239 @@
             </div>
         </div>
     </div>
-
+    <!-- categories section -->
+<section class="hidden">
+<span class="ml-2 text-gray-500 font-bold tracking-wide truncate ">Categories</span>
+                        <div class="flex items-center justify-center ">
+                            <div class="col-span-12">
+                                <div class="overflow-auto lg:overflow-visible ">
+                                    <table class="table text-gray-400 border-separate space-y-6 text-sm">
+                                        <thead class="bg-gray-800 text-gray-500">
+                                            <tr>
+                                                <th class="p-3">Categories</th>
+                                                <th class="p-3 text-left">Category</th>
+                                                <th class="p-3 text-left">Price</th>
+                                                <th class="p-3 text-left">Status</th>
+                                                <th class="p-3 text-left">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="bg-gray-800">
+                                                <td class="p-3">
+                                                    <div class="flex align-items-center">
+                                                        <img class="rounded-full h-12 w-12  object-cover" src="https://images.unsplash.com/photo-1613588718956-c2e80305bf61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80" alt="unsplash image">
+                                                        <div class="ml-3">
+                                                            <div class="">Appple</div>
+                                                            <div class="text-gray-500">mail@rgmail.com</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="p-3">
+                                                    Technology
+                                                </td>
+                                                <td class="p-3 font-bold">
+                                                    200.00$
+                                                </td>
+                                                <td class="p-3">
+                                                    <span class="bg-green-400 text-gray-50 rounded-md px-2">available</span>
+                                                </td>
+                                                <td class="p-3 ">
+                                                    <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
+                                                        <i class="material-icons-outlined text-base">visibility</i>
+                                                    </a>
+                                                    <a href="#" class="text-gray-400 hover:text-gray-100  mx-2">
+                                                        <i class="material-icons-outlined text-base">edit</i>
+                                                    </a>
+                                                    <a href="#" class="text-gray-400 hover:text-gray-100  ml-2">
+                                                        <i class="material-icons-round text-base">delete_outline</i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr class="bg-gray-800">
+                                                <td class="p-3">
+                                                    <div class="flex align-items-center">
+                                                        <img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1423784346385-c1d4dac9893a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="unsplash image">
+                                                        <div class="ml-3">
+                                                            <div class="">Realme</div>
+                                                            <div class="text-gray-500">mail@rgmail.com</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="p-3">
+                                                    Technology
+                                                </td>
+                                                <td class="p-3 font-bold">
+                                                    200.00$
+                                                </td>
+                                                <td class="p-3">
+                                                    <span class="bg-red-400 text-gray-50 rounded-md px-2">no stock</span>
+                                                </td>
+                                                <td class="p-3">
+                                                    <a href="#" class="text-gray-400 hover:text-gray-100  mr-2">
+                                                        <i class="material-icons-outlined text-base">visibility</i>
+                                                    </a>
+                                                    <a href="#" class="text-gray-400 hover:text-gray-100 mx-2">
+                                                        <i class="material-icons-outlined text-base">edit</i>
+                                                    </a>
+                                                    <a href="#" class="text-gray-400 hover:text-gray-100 ml-2">
+                                                        <i class="material-icons-round text-base">delete_outline</i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr class="bg-gray-800">
+                                                <td class="p-3">
+                                                    <div class="flex align-items-center">
+                                                        <img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1600856209923-34372e319a5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2135&q=80" alt="unsplash image">
+                                                        <div class="ml-3">
+                                                            <div class="">Samsung</div>
+                                                            <div class="text-gray-500">mail@rgmail.com</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="p-3">
+                                                    Technology
+                                                </td>
+                                                <td class="p-3 font-bold">
+                                                    200.00$
+                                                </td>
+                                                <td class="p-3">
+                                                    <span class="bg-yellow-400 text-gray-50  rounded-md px-2">start sale</span>
+                                                </td>
+                                                <td class="p-3">
+                                                    <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
+                                                        <i class="material-icons-outlined text-base">visibility</i>
+                                                    </a>
+                                                    <a href="#" class="text-gray-400 hover:text-gray-100 mx-2">
+                                                        <i class="material-icons-outlined text-base">edit</i>
+                                                    </a>
+                                                    <a href="#" class="text-gray-400 hover:text-gray-100 ml-2">
+                                                        <i class="material-icons-round text-base">delete_outline</i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+</section>
+<!-- end categories section -->
+    <!-- products section -->
+<section class="hidden">
+<span class="ml-2 text-gray-500 font-bold tracking-wide truncate ">Products</span>
+                        <div class="flex items-center justify-center ">
+                            <div class="col-span-12">
+                                <div class="overflow-auto lg:overflow-visible ">
+                                    <table class="table text-gray-400 border-separate space-y-6 text-sm">
+                                        <thead class="bg-gray-800 text-gray-500">
+                                            <tr>
+                                                <th class="p-3">Brand</th>
+                                                <th class="p-3 text-left">Category</th>
+                                                <th class="p-3 text-left">Price</th>
+                                                <th class="p-3 text-left">Status</th>
+                                                <th class="p-3 text-left">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="bg-gray-800">
+                                                <td class="p-3">
+                                                    <div class="flex align-items-center">
+                                                        <img class="rounded-full h-12 w-12  object-cover" src="https://images.unsplash.com/photo-1613588718956-c2e80305bf61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80" alt="unsplash image">
+                                                        <div class="ml-3">
+                                                            <div class="">Appple</div>
+                                                            <div class="text-gray-500">mail@rgmail.com</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="p-3">
+                                                    Technology
+                                                </td>
+                                                <td class="p-3 font-bold">
+                                                    200.00$
+                                                </td>
+                                                <td class="p-3">
+                                                    <span class="bg-green-400 text-gray-50 rounded-md px-2">available</span>
+                                                </td>
+                                                <td class="p-3 ">
+                                                    <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
+                                                        <i class="material-icons-outlined text-base">visibility</i>
+                                                    </a>
+                                                    <a href="#" class="text-gray-400 hover:text-gray-100  mx-2">
+                                                        <i class="material-icons-outlined text-base">edit</i>
+                                                    </a>
+                                                    <a href="#" class="text-gray-400 hover:text-gray-100  ml-2">
+                                                        <i class="material-icons-round text-base">delete_outline</i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr class="bg-gray-800">
+                                                <td class="p-3">
+                                                    <div class="flex align-items-center">
+                                                        <img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1423784346385-c1d4dac9893a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="unsplash image">
+                                                        <div class="ml-3">
+                                                            <div class="">Realme</div>
+                                                            <div class="text-gray-500">mail@rgmail.com</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="p-3">
+                                                    Technology
+                                                </td>
+                                                <td class="p-3 font-bold">
+                                                    200.00$
+                                                </td>
+                                                <td class="p-3">
+                                                    <span class="bg-red-400 text-gray-50 rounded-md px-2">no stock</span>
+                                                </td>
+                                                <td class="p-3">
+                                                    <a href="#" class="text-gray-400 hover:text-gray-100  mr-2">
+                                                        <i class="material-icons-outlined text-base">visibility</i>
+                                                    </a>
+                                                    <a href="#" class="text-gray-400 hover:text-gray-100 mx-2">
+                                                        <i class="material-icons-outlined text-base">edit</i>
+                                                    </a>
+                                                    <a href="#" class="text-gray-400 hover:text-gray-100 ml-2">
+                                                        <i class="material-icons-round text-base">delete_outline</i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr class="bg-gray-800">
+                                                <td class="p-3">
+                                                    <div class="flex align-items-center">
+                                                        <img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1600856209923-34372e319a5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2135&q=80" alt="unsplash image">
+                                                        <div class="ml-3">
+                                                            <div class="">Samsung</div>
+                                                            <div class="text-gray-500">mail@rgmail.com</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="p-3">
+                                                    Technology
+                                                </td>
+                                                <td class="p-3 font-bold">
+                                                    200.00$
+                                                </td>
+                                                <td class="p-3">
+                                                    <span class="bg-yellow-400 text-gray-50  rounded-md px-2">start sale</span>
+                                                </td>
+                                                <td class="p-3">
+                                                    <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
+                                                        <i class="material-icons-outlined text-base">visibility</i>
+                                                    </a>
+                                                    <a href="#" class="text-gray-400 hover:text-gray-100 mx-2">
+                                                        <i class="material-icons-outlined text-base">edit</i>
+                                                    </a>
+                                                    <a href="#" class="text-gray-400 hover:text-gray-100 ml-2">
+                                                        <i class="material-icons-round text-base">delete_outline</i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+</section>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
     <script>
         const setup = () => {
