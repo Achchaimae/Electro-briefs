@@ -1,3 +1,7 @@
+<?php
+    print_r($data);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +41,7 @@
     </section>
     <section class="bg-blue-100 flex flex-row flex-wrap justify-center m-4 items-center gap-7">
 
-        <?php foreach ($listproduit as $key => $value) { ?>
+    <?php foreach ($data['products'] as $product) : ?>
 
             <div class="w-full h-auto max-w-sm  py-4 bg-white rounded-lg shadow-md my-auto ">
                 <a href="#" class="flex justify-center">
@@ -45,7 +49,7 @@
                 </a>
                 <div class="px-5 pb-5">
                     <a href="#">
-                        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-black"> <?php echo $value['libelle'] ?></h5>
+                        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-black"> <?php  ?></h5>
                     </a>
                     <div class="flex items-center mt-2.5 mb-5">
                         <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -76,8 +80,7 @@
                     </div>
                 </div>
             </div>
-        <?php  }
-        ?>
+        <?php endforeach ?>
 
     </section>
     <section>
