@@ -351,21 +351,21 @@
                     <tbody>
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <td class="py-4 px-6">
-                            <?php echo $product->date_create; ?>
+                            <?php echo $data['date_crea'] ?>
                             </td>
                             <td scope="row" class="py-4 px-6 font-medium text-gray-900 wditespace-nowrap dark:text-white">
-                               client
+                            <?php echo $product->ref ; ?>
                             </td>
 
                             <td class="py-4 px-6">
-                                quantite
+                            <?php echo $product->quantite ; ?>
                             </td>
 
                             <td class="py-4 px-6">
-                              prix uniti
+                            <?php echo $product->prix_achat ; ?>
                             </td>
                             <td class="py-4 px-6">
-                                total
+                                <?php echo $product->prix_final ; ?>
                             </td>
                             <td class="py-4 px-6">
                                 <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Accept</a>
@@ -528,6 +528,7 @@
                                                 <th class="p-3 text-left">Action</th>
                                             </tr>
                                         </thead>
+                                        <
                                         <tbody>
                                             <tr class="bg-gray-800">
                                                 <td class="p-3">

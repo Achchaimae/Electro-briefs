@@ -1,37 +1,26 @@
 <?php
-    class Products extends Controller{
+    class Commande extends Controller{
         public $productmodels;
         public function __construct(){
-            $this->productmodels=$this->model('Product');
+            $this->productmodels=$this->model('Commande');
         }
         public function dashboard(){
-            $products = $this->productmodels->List();
+            $commande = $this->productmodels->List();
             $data = [
-                'products' => $products
+                'Commande' => $commande
             ];
             $this->view('pages/admin/dashboard',$data);
         }
-
         public function add(){
             if($_SERVER['REQUEST_METHOD']=='POST'){
                 $imgName = $_FILES['image']['name'];
                 $imgTmp = $_FILES['image']['tmp_name'];
                 move_uploaded_file($imgTmp, 'img/upload/' . $imgName);
-
-// date_envoi
-// date_livraison
-// client_id
-// prix_unitaire
-// quantite
-// prix_total_produit
-// date_creation
-// prix_total_commande
                 $data= [
-                     
-                        'date_envoi' => $_POST['date_envoi'],
-                        'date_livraison' => $_POST['date_livraison'],
-                        ' client_id' => $_POST[' client_id'],
-                        'prix_unitaire' => $_POST['prix_unitaire'],
+                   'ref' => $_POST['ref'],
+                     'libelle' => $_POST['libelle'],
+                        'code_barre' => $_POST['code_barre'],
+                        'prix_achat' => $_POST['prix_achat'],
                         'prix_final' => $_POST['prix_final'],
                         'prix_offre' => $_POST['prix_offre'],
                         'quantite' => $_POST['quantite'],
@@ -47,7 +36,7 @@
                 else{
                     die('Something went wrong');
                 }
-
+    
             }
             else  {
             $data=[
