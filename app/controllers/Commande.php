@@ -11,6 +11,22 @@
             ];
             $this->view('pages/admin/dashboard',$data);
         }
+        
+            // date_creation
+            // date_envoi
+            // date_livraison
+            // client_id
+            // prix_unitaire
+            // quantite
+            // prix_total_produit
+            // prix_total_commande
+        // public function list(){
+        //     $commande = $this->productmodels->List();
+        //     $data = [
+        //         'Commande' => $commande
+        //     ];
+        //     $this->view('pages/admin/list',$data);
+        // }
         public function add(){
             if($_SERVER['REQUEST_METHOD']=='POST'){
                 $imgName = $_FILES['image']['name'];

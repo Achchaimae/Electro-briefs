@@ -42,7 +42,7 @@ class Autho extends Controller{
         $role=$adm->role;
          if($role=='admin'){
             $_SESSION['admin'] = $adm->email;
-            redirect('Products/dashboard');
+            redirect('Commandes/dashboard');
         }
         else{
             $_SESSION['user'] = $adm->email;
