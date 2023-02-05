@@ -1,7 +1,3 @@
-<?php
-    print_r($data);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,13 +17,43 @@
 </head>
 
 <body class="bg-blue-100 ">
-    <?php include_once 'includes/header.php'; ?>
+    <section class="hero">
+        <div class="flex flex-row gap-4 items-center">
+            <div class="logo ">
+                <a href="#"><img src="<?= URLROOT; ?>/img/mobile logo.png" alt="logo"></a>
+            </div>
+            <div class="flex flex-row gap-4">
+                <div>
+                    <b><a href="<?= URLROOT; ?>/products/user">categorie</a></b>
+                </div>
+                <div>
+                    <b><a href="View/Contact.php">Contact Us</a></b>
+                </div>
+                <div>
+                    <b><a href="View/AboutUs.php">About Us</a></b>
+                </div>
+            </div>
+
+        </div>
+        <div class="icons">
+            <div class="icon-item">
+                <a href="<?= URLROOT; ?>/autho/login">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </div>
+            <div>
+                <a href="View/cart.php">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+            </div>
+        </div>
+    </section>
     <section class="flex flex-row justify-center gap-2 m-2">
 
         <select id="countries" class="my-auto w-1/6 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             <option selected>PRICE</option>
-            <option value="AC"><a href="../index.php?c=ascend">Assendent</a> </option>
-            <option value="DE"><a href="../index.php?c=descend">Dessendent</a> </option>
+            <option value="AC"><a href="">Assendent</a> </option>
+            <option value="DE"><a href="">Dessendent</a> </option>
 
         </select>
         <select id="countries" class="my-auto w-3/5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -41,15 +67,15 @@
     </section>
     <section class="bg-blue-100 flex flex-row flex-wrap justify-center m-4 items-center gap-7">
 
-    <?php foreach ($data['products'] as $product) : ?>
+        <?php foreach ($data['products'] as $product) : ?>
 
             <div class="w-full h-auto max-w-sm  py-4 bg-white rounded-lg shadow-md my-auto ">
                 <a href="#" class="flex justify-center">
-                    <img class="p-8 rounded-t-lg -center" src="../assets/image/accessorie2.png " alt="product image" />
+                    <img class="p-8 rounded-t-lg -center" src="<?php echo $product->image; ?> " alt="product image" />
                 </a>
                 <div class="px-5 pb-5">
                     <a href="#">
-                        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-black"> <?php  ?></h5>
+                        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-black"></h5>
                     </a>
                     <div class="flex items-center mt-2.5 mb-5">
                         <svg aria-hidden="true" class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -75,8 +101,8 @@
                         <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
                     </div>
                     <div class="flex items-center justify-between">
-                        <span class="text-3xl font-bold text-gray-900 dark:text-black"><?php echo $value['prix_offre'] ?> $</span>
-                        <a href="cart.php" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
+                        <span class="text-3xl font-bold text-gray-900 dark:text-black"><?php echo $product->prix_offre; ?> $</span>
+                        <a href="<?= URLROOT; ?>/pages/user/cart" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
                     </div>
                 </div>
             </div>
@@ -84,7 +110,7 @@
 
     </section>
     <section>
-        <?php include 'includes/footer.php'; ?>
+
     </section>
 </body>
 
