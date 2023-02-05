@@ -24,9 +24,9 @@
                 $imgTmp = $_FILES['image']['tmp_name'];
                 $data=[
 
-                    'nom' => $_POST['nom'],
+                    'name' => $_POST['name'],
                     'description' => $_POST['description'],
-                    'photo' => $_FILES['photo'],
+                    'image' => $imgName,
                 ];
                 $test=$this->categorymodels->add($data);
                 if($test){
@@ -38,12 +38,57 @@
             }
             else  {
             $data=[
-                'nom' => '',
+                'name' => '',
                 'description' => '',
-                'photo' => '',
+                'image' => '',
 
             ];
-            // $this->view('pages/addcategory',$data);
+            $this->view('pages/admin/add/addcategory',$data);
+            }
         }
+        public function edit($id){
+            if($_SERVER['REQUEST_METHOD']=='POST'){
+                $imgName = $_FILES['image']['name'];
+                $imgTmp = $_FILES['image']['tmp_name'];
+                $data=[
+
+                    'id' => $id,
+                    'name' => $_POST['name'],
+                    'description' => $_POST['description'],
+                    'image' => $imgName,
+                ];
+                $test=$this->categorymodels->update($data);
+                if($test){
+                    redirect('pages/dashboard');
+                }
+                else{
+                    die('Something went wrong');
+                }
+            }
+            else  {
+                $category = $this->categorymodels->get($id);
+                $data=[
+                    'id' => $id,
+                    'name' => $category->name,
+                    'description' => $category->description,
+                    'image' => $category->image,
+                ];
+                $this->view('pages/admin/edit/editcategory',$data);
+            }
+        }
+             public function delete($id){
+            if($_SERVER['REQUEST_METHOD']=='GET'){
+               
+                if($this->categorymodels->Delete($id)){
+                    redirect('categories/dashboard');
+                }
+                else{
+                    die('Something went wrong');
+                }
+            }
+            else{
+                redirect('categories/dashboard');
+            }
+        }
+
     }
-}
