@@ -19,12 +19,18 @@
     }
     // crud
     public function Add($data){
-        $this->db->query("INSERT INTO product (name,image,price,quantity,description) VALUES (:name,:image,:price,:quantity,:description)");
-        $this->db->bind(':name',$data['name']);
-        $this->db->bind(':image',$data['image']);
-        $this->db->bind(':price',$data['price']);
-        $this->db->bind(':quantity',$data['quantity']);
+        // ref	libelle	code_barre	prix_achat	prix_final	prix_offre	quantite	description	image	categorie_id	
+        $this->db->query("INSERT INTO product (ref,libelle,code_barre,prix_achat,prix_final,prix_offre,quantite,description,image,categorie_id) VALUES (:ref,:libelle,:code_barre,:prix_achat,:prix_final,:prix_offre,:quantite,:description,:image,:categorie_id)");
+        $this->db->bind(':ref',$data['ref']);
+        $this->db->bind(':libelle',$data['libelle']);
+        $this->db->bind(':code_barre',$data['code_barre']);
+        $this->db->bind(':prix_achat',$data['prix_achat']);
+        $this->db->bind(':prix_final',$data['prix_final']);
+        $this->db->bind(':prix_offre',$data['prix_offre']);
+        $this->db->bind(':quantite',$data['quantite']);
         $this->db->bind(':description',$data['description']);
+        $this->db->bind(':image',$data['image']);
+        $this->db->bind(':categorie_id',$data['categorie_id']);
         if($this->db->execute()){
             return true;
         }
@@ -33,13 +39,18 @@
         }
     }
     public function Update($data){
-        $this->db->query("UPDATE product SET name=:name,image=:image,price=:price,quantity=:quantity,description=:description WHERE id=:id");
+        $this->db->query("UPDATE product SET ref=:ref,libelle=:libelle,code_barre=:code_barre,prix_achat=:prix_achat,prix_final=:prix_final,prix_offre=:prix_offre,quantite=:quantite,description=:description,image=:image,categorie_id=:categorie_id WHERE id=:id");
         $this->db->bind(':id',$data['id']);
-        $this->db->bind(':name',$data['name']);
-        $this->db->bind(':image',$data['image']);
-        $this->db->bind(':price',$data['price']);
-        $this->db->bind(':quantity',$data['quantity']);
+        $this->db->bind(':ref',$data['ref']);
+        $this->db->bind(':libelle',$data['libelle']);
+        $this->db->bind(':code_barre',$data['code_barre']);
+        $this->db->bind(':prix_achat',$data['prix_achat']);
+        $this->db->bind(':prix_final',$data['prix_final']);
+        $this->db->bind(':prix_offre',$data['prix_offre']);
+        $this->db->bind(':quantite',$data['quantite']);
         $this->db->bind(':description',$data['description']);
+        $this->db->bind(':image',$data['image']);
+        $this->db->bind(':categorie_id',$data['categorie_id']);
         if($this->db->execute()){
             return true;
         }
