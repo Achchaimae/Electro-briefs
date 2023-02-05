@@ -200,88 +200,88 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 p-4 gap-4">
 
                 </div>
-
+                <span class="ml-2 text-gray-500 font-bold tracking-wide truncate ">Commandes</span>
                 <!-- commande table -->
-            <div class="overflow-x-auto relative shadow-md sm:rounded-lg m-4">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="py-3 px-6">
-                           Date creation 
-                        </th>
-                        <th scope="col" class="py-3 px-6">
-                            client
-                        </th>
-                        <th scope="col" class="py-3 px-6">
-                            Category
-                        </th>
-                        <th scope="col" class="py-3 px-6">
-                            Price
-                        </th>
-                        <th scope="col" class="py-3 px-6">
-                            total price
-                        </th>
-                        <th scope="col" class="py-3 px-6">
-                            Action
-                        </th>
-                        <th scope="col" class="py-3 px-6">
-                            Action
-                        </th>
-                    </tr>
-                </thead>
-                <?php foreach ($data['commandes'] as $commande) : ?>
-                    <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <td class="py-4 px-6">
-                            <?php echo $commande->date_creation?>
-                            </td>
-                            <td scope="row" class="py-4 px-6 font-medium text-gray-900 wditespace-nowrap dark:text-white">
-                            <?php echo $commande->date_livraison ; ?> 
-                            </td>
+                <div class="overflow-x-auto relative shadow-md sm:rounded-lg m-4">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="py-3 px-6">
+                                    Date creation
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    client
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Category
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Price
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    total price
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    status
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <?php foreach ($data['commandes'] as $commande) : ?>
+                            <tbody>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <td class="py-4 px-6">
+                                        <?php echo $commande->date_creation ?>
+                                    </td>
+                                    <td scope="row" class="py-4 px-6 font-medium text-gray-900 wditespace-nowrap dark:text-white">
+                                        <?php echo $commande->client_id; ?>
+                                    </td>
 
-                            <td class="py-4 px-6">
-                            <?php echo $commande->client_id ; ?>
-                            </td>
+                                    <td class="py-4 px-6">
+                                        <?php echo $commande->prix_unitaire; ?>
+                                    </td>
 
-                            <td class="py-4 px-6">
-                            <?php echo $commande->quantite ; ?>
-                            </td>
-                            <td class="py-4 px-6">
-                            <?php echo $commande->prix_total_commande ; ?>
-                            </td>
-                            <td class="py-4 px-6">
-                            <?php echo $commande->status ; ?>
-                            </td>
-                            </td>
-                            <td class="py-4 px-6">
-                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Accept</a>
-                            </td>
-                            <td class="py-4 px-6">
-                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Refuse</a>
-                            </td>
-                        </tr>
+                                    <td class="py-4 px-6">
+                                        <?php echo $commande->quantite; ?>
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <?php echo $commande->prix_total_commande; ?>
+                                    </td>
+                                    <td class="py-4 px-6 text-blue-300">
+                                        <?php echo $commande->status; ?>
+                                    </td>
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Accept</a>
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Refuse</a>
+                                    </td>
+                                </tr>
 
-                    </tbody>
-                    <?php endforeach; ?>
-            </table>
-            <!-- <button class="add-btn  "><a href="Ajouter.php">ajouter</a></button> -->
-            
-        </div>
+                            </tbody>
+                        <?php endforeach; ?>
+                    </table>
+                    <!-- <button class="add-btn  "><a href="Ajouter.php">ajouter</a></button> -->
 
-        </tbody>
-    
-    
+                </div>
 
-    </table>
-    </div>
-    <!-- end commande table -->
-                <!-- ./Client Table -->
+                </tbody>
 
-                <!-- ./External resources -->
+
+
+                </table>
             </div>
+            <!-- end commande table -->
+            <!-- ./Client Table -->
+
+            <!-- ./External resources -->
         </div>
     </div>
-    
+    </div>
+
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
     <script>
         const setup = () => {
