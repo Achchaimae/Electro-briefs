@@ -197,42 +197,40 @@
                 </div>
                 <!-- ./Statistics Cards -->
 
-                <section >
-                    <span class="ml-2 text-gray-500 font-bold tracking-wide truncate ">Categories</span>
-                        <div class="flex items-center justify-center ">
-                            <div class="col-span-12">
-                                <div class="overflow-auto lg:overflow-visible ">
-                                    <table class="table text-gray-400 border-separate space-y-6 text-sm">
-                                        <thead class="bg-gray-800 text-gray-500">
-                                            <tr>
-                                                <th class="p-3">Categories</th>
-                                                <th class="p-3 text-left">Category</th>
-                                                <th class="p-3 text-left">Price</th>
-                                                <th class="p-3 text-left">Status</th>
-                                                <th class="p-3 text-left">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <?php foreach ($data['categories'] as $categorie) : ?>
+                <section>
+                    <div class="flex justify-between mx-4">
+                        <span class="ml-2 text-gray-500 font-bold tracking-wide truncate ">Categories</span>
+                        <button class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "><a href="<?= URLROOT; ?>/categories/add">Add</a></button>
+                    </div>
+                    <div class="flex items-center justify-center ">
+                        <div class="col-span-12">
+                            <div class="overflow-auto lg:overflow-visible w-full     ">
+                                <table class="table text-gray-400 border-separate space-y-6 text-sm w-[70vw]">
+                                    <thead class="bg-gray-800 text-gray-500">
+                                        <tr>
+                                            <th class="p-3">Categories</th>
+                                            <th class="p-3 text-left">name</th>
+                                            <th class="p-3 text-left">description</th>
+                                            <!-- <th class="p-3 text-left">Status</th> -->
+                                            <th class="p-3 text-left">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <?php foreach ($data['categories'] as $categorie) : ?>
                                         <tbody>
                                             <tr class="bg-gray-800">
-                                                <td class="p-3">
+                                                <td class="p-3 flex justify-center">
                                                     <div class="flex align-items-center">
-                                                        <img class="rounded-full h-12 w-12  object-cover" src="https://images.unsplash.com/photo-1613588718956-c2e80305bf61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80" alt="unsplash image">
-                                                        <div class="ml-3">
-                                                            <div class=""><?php echo $categorie->nom ; ?></div>
-                                                            
-                                                        </div>
+                                                        <img class="rounded-full h-12 w-12  object-cover" src="<?php echo $categorie->photo; ?>" alt="unsplash image">
+
                                                     </div>
                                                 </td>
                                                 <td class="p-3">
-                                                    Technology
-                                                </td>
-                                                <td class="p-3 font-bold">
-                                                    200.00$
+                                                    <?php echo $categorie->name; ?>
                                                 </td>
                                                 <td class="p-3">
-                                                    <span class="bg-green-400 text-gray-50 rounded-md px-2">available</span>
+                                                    <?php echo $categorie->description; ?>
                                                 </td>
+
                                                 <td class="p-3 ">
                                                     <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
                                                         <i class="material-icons-outlined text-base">visibility</i>
@@ -240,106 +238,46 @@
                                                     <a href="#" class="text-gray-400 hover:text-gray-100  mx-2">
                                                         <i class="material-icons-outlined text-base">edit</i>
                                                     </a>
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100  ml-2">
+                                                    <a href="<?php echo URLROOT . '/categories/delete/' . $categorie->id ?>" class="text-gray-400 hover:text-gray-100  ml-2">
                                                         <i class="material-icons-round text-base">delete_outline</i>
                                                     </a>
                                                 </td>
                                             </tr>
-                                            <tr class="bg-gray-800">
-                                                <td class="p-3">
-                                                    <div class="flex align-items-center">
-                                                        <img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1423784346385-c1d4dac9893a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="unsplash image">
-                                                        <div class="ml-3">
-                                                            <div class="">Realme</div>
-                                                            <div class="text-gray-500">mail@rgmail.com</div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="p-3">
-                                                    Technology
-                                                </td>
-                                                <td class="p-3 font-bold">
-                                                    200.00$
-                                                </td>
-                                                <td class="p-3">
-                                                    <span class="bg-red-400 text-gray-50 rounded-md px-2">no stock</span>
-                                                </td>
-                                                <td class="p-3">
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100  mr-2">
-                                                        <i class="material-icons-outlined text-base">visibility</i>
-                                                    </a>
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100 mx-2">
-                                                        <i class="material-icons-outlined text-base">edit</i>
-                                                    </a>
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100 ml-2">
-                                                        <i class="material-icons-round text-base">delete_outline</i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr class="bg-gray-800">
-                                                <td class="p-3">
-                                                    <div class="flex align-items-center">
-                                                        <img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1600856209923-34372e319a5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2135&q=80" alt="unsplash image">
-                                                        <div class="ml-3">
-                                                            <div class="">Samsung</div>
-                                                            <div class="text-gray-500">mail@rgmail.com</div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="p-3">
-                                                    Technology
-                                                </td>
-                                                <td class="p-3 font-bold">
-                                                    200.00$
-                                                </td>
-                                                <td class="p-3">
-                                                    <span class="bg-yellow-400 text-gray-50  rounded-md px-2">start sale</span>
-                                                </td>
-                                                <td class="p-3">
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-                                                        <i class="material-icons-outlined text-base">visibility</i>
-                                                    </a>
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100 mx-2">
-                                                        <i class="material-icons-outlined text-base">edit</i>
-                                                    </a>
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100 ml-2">
-                                                        <i class="material-icons-round text-base">delete_outline</i>
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                        <?php endforeach; ?>
+
                                         </tbody>
-                                        <?php endforeach ?>
-                                    </table>
-                                </div>
+
+                                </table>
                             </div>
                         </div>
+                    </div>
                 </section>
                 <!-- end categories section -->
 
                 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
-    <script>
-        const setup = () => {
-            const getTheme = () => {
-                if (window.localStorage.getItem('dark')) {
-                    return JSON.parse(window.localStorage.getItem('dark'))
-                }
-                return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-            }
+                <script>
+                    const setup = () => {
+                        const getTheme = () => {
+                            if (window.localStorage.getItem('dark')) {
+                                return JSON.parse(window.localStorage.getItem('dark'))
+                            }
+                            return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+                        }
 
-            const setTheme = (value) => {
-                window.localStorage.setItem('dark', value)
-            }
+                        const setTheme = (value) => {
+                            window.localStorage.setItem('dark', value)
+                        }
 
-            return {
-                loading: true,
-                isDark: getTheme(),
-                toggleTheme() {
-                    this.isDark = !this.isDark
-                    setTheme(this.isDark)
-                },
-            }
-        }
-    </script>
+                        return {
+                            loading: true,
+                            isDark: getTheme(),
+                            toggleTheme() {
+                                this.isDark = !this.isDark
+                                setTheme(this.isDark)
+                            },
+                        }
+                    }
+                </script>
 </body>
 
 </html>
