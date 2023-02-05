@@ -19,10 +19,10 @@
 
             public function Add($data){
 
-                $this->db->query("INSERT INTO categorie (nom,description,photo) VALUES (:nom,:description,:photo)");
-                $this->db->bind(':nom',$data['nom']);
+                $this->db->query("INSERT INTO categorie (name,description,image) VALUES (:name,:description,:image)");
+                $this->db->bind(':name',$data['name']);
                 $this->db->bind(':description',$data['description']);
-                $this->db->bind(':photo',$data['photo']);
+                $this->db->bind(':image',$data['image']);
 
 
                 if($this->db->execute()){
@@ -33,11 +33,11 @@
                 }
             }
             public function Update($data){
-                $this->db->query("UPDATE category SET nom=:nom WHERE id=:id");
+                $this->db->query("UPDATE category SET name=:name WHERE id=:id");
                 $this->db->bind(':id',$data['id']);
-                $this->db->bind(':nom',$data['nom']);
+                $this->db->bind(':name',$data['name']);
                 $this->db->bind(':description',$data['description']);
-                $this->db->bind(':photo',$data['photo']);
+                $this->db->bind(':image',$data['image']);
 
                 if($this->db->execute()){
                     return true;

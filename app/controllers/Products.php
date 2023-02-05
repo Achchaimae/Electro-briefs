@@ -19,10 +19,11 @@
             $this->view('pages/product',$data);
         }
 
-        public function add(){
+        public function addproduct(){
             if($_SERVER['REQUEST_METHOD']=='POST'){
-                $imgName = $_FILES['image']['name'];
-                $imgTmp = $_FILES['image']['tmp_name'];
+            
+                $imgName = $_FILES['img']['name'];
+                $imgTmp = $_FILES['img']['tmp_name'];
                 move_uploaded_file($imgTmp, 'img/upload/' . $imgName);
                 $data= [
                     //  ref	libelle	code_barre	prix_achat	prix_final	prix_offre	quantite	description	image	categorie_id	
@@ -40,9 +41,10 @@
 
                        
                 ];
-                $test=$this->productmodels->add($data);
+
+                $test=$this->productmodels->addproduct($data);
                 if($test){
-                    redirect('pages/dashboard');
+                    redirect('products/dashboard');
                 }
                 else{
                     die('Something went wrong');
@@ -62,6 +64,7 @@
                 'image' => '',
                 'categorie_id' => '',
             ];
+            
            $this->view('pages/admin/add/addproduct',$data);
         }
         }

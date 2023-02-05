@@ -30,7 +30,7 @@
                 ];
                 $test=$this->categorymodels->add($data);
                 if($test){
-                    redirect('pages/dashboard');
+                    redirect('categories/dashboard');
                 }
                 else{
                     die('Something went wrong');

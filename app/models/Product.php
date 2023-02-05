@@ -18,7 +18,7 @@
         return $row;
     }
     // crud
-    public function Add($data){
+    public function addproduct($data){
         // ref	libelle	code_barre	prix_achat	prix_final	prix_offre	quantite	description	image	categorie_id	
         $this->db->query("INSERT INTO product (ref,libelle,code_barre,prix_achat,prix_final,prix_offre,quantite,description,image,categorie_id) VALUES (:ref,:libelle,:code_barre,:prix_achat,:prix_final,:prix_offre,:quantite,:description,:image,:categorie_id)");
         $this->db->bind(':ref',$data['ref']);
