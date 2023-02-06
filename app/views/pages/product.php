@@ -11,8 +11,10 @@
     <link href="<?= URLROOT; ?>/css/mystyle.css" rel="stylesheet">
     <!-- link tailwind css -->
     <link href="<?= URLROOT; ?>/dist/output.css" rel="stylesheet">
+
     <!-- link to font awesome -->
     <script src="https://kit.fontawesome.com/93e0a23dda.js" crossorigin="anonymous"></script>
+
     <title>home</title>
 </head>
 
@@ -50,19 +52,33 @@
     </section>
     <section class="flex flex-row justify-center gap-2 m-2">
 
-        <select id="countries" class="my-auto w-1/6 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <option selected>PRICE</option>
-            <option value="AC"><a href="">Assendent</a> </option>
-            <option value="DE"><a href="">Dessendent</a> </option>
+    
 
+
+
+    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class=" text-white bg-gray-50 border border-gray-300 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-800" type="button">PRICE <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+    <!-- Dropdown menu -->
+    <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+        <li>
+            <a href="<?= URLROOT ;?>/products/listascend" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ascending</a>
+        </li>
+        <li>
+            <a href="<?= URLROOT ;?>/products/listdescend" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Descending</a>
+        </li>
+        
+    </div>
+
+
+
+        
+        <select name="category" class="my-auto w-3/5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        
+                        <?php foreach($data['categories'] as $category) : ?>
+                            <option value="<?= $category->name; ?>"><?= $category->name; ?></option>
+                        <?php endforeach; ?>
         </select>
-        <select id="countries" class="my-auto w-3/5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <option selected>Categories</option>
-            <option value="phone">phone</option>
-            <option value="laptop">laptop</option>
-            <option value="headset">headset</option>
-            <option value="accessoires">accessoires</option>
-        </select>
+
 
     </section>
     <section class="bg-blue-100 flex flex-row flex-wrap justify-center m-4 items-center gap-7">
@@ -71,7 +87,7 @@
 
             <div class="w-full h-auto max-w-sm  py-4 bg-white rounded-lg shadow-md my-auto ">
                 <a href="#" class="flex justify-center">
-                    <img class="p-8 rounded-t-lg -center" src="<?php echo $product->image; ?> " alt="product image" />
+                    <img class="p-8 rounded-t-lg -center" src="<?= URLROOT . '/img/upload/' . $product->image ?> " alt="product image" />
                 </a>
                 <div class="px-5 pb-5">
                     <a href="#">
@@ -113,5 +129,6 @@
 
     </section>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
 
 </html>

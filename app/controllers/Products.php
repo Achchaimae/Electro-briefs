@@ -6,6 +6,7 @@
         }
         public function dashboard(){
             $products = $this->productmodels->List();
+
             $data = [
                 'products' => $products
             ];
@@ -13,18 +14,48 @@
         }
         public function user(){
             $products = $this->productmodels->List();
+            $categories = $this->productmodels->category();
             $data = [
-                'products' => $products
+                'products' => $products,
+                'categories' => $categories
             ];
             $this->view('pages/product',$data);
         }
-
+        public function listascend(){
+            $products = $this->productmodels->listascend();
+            $categories = $this->productmodels->category();
+            $data = [
+                'products' => $products,
+                'categories' => $categories
+            ];
+            $this->view('pages/product',$data);
+        }
+        public function listdescend(){
+            $products = $this->productmodels->listdescend();
+            $categories = $this->productmodels->category();
+            $data = [
+                'products' => $products,
+                'categories' => $categories
+            ];
+            $this->view('pages/product',$data);
+        }
+        public function listbycategory($id){
+            $products = $this->productmodels->listbycategory($id);
+            $data = [
+                'products' => $products,
+            ];
+            $this->view('products/user',$data);
+        }
         public function addproduct(){
             if($_SERVER['REQUEST_METHOD']=='POST'){
             
                 $imgName = $_FILES['img']['name'];
                 $imgTmp = $_FILES['img']['tmp_name'];
                 move_uploaded_file($imgTmp, 'img/upload/' . $imgName);
+
+                $getCategoryByName = $this->productmodels->getCategoryByName($_POST['category']);
+
+
                 $data= [
                     //  ref	libelle	code_barre	prix_achat	prix_final	prix_offre	quantite	description	image	categorie_id	
 
@@ -37,8 +68,7 @@
                     'quantite' => $_POST['quantite'],
                     'description' => $_POST['description'],
                     'image' => $imgName,
-                    'categorie_id' => $_POST['categorie_id'],
-
+                    'categorie' => $getCategoryByName->id,
                        
                 ];
 
@@ -52,21 +82,24 @@
 
             }
             else  {
-            $data=[
-                'ref' => '',
-                'libelle' => '',
-                'code_barre' => '',
-                'prix_achat' => '',
-                'prix_final' => '',
-                'prix_offre' => '',
-                'quantite' => '',
-                'description' => '',
-                'image' => '',
-                'categorie_id' => '',
-            ];
-            
-           $this->view('pages/admin/add/addproduct',$data);
-        }
+                
+                $categories = $this->productmodels->category();
+                $data=[
+                    'ref' => '',
+                    'libelle' => '',
+                    'code_barre' => '',
+                    'prix_achat' => '',
+                    'prix_final' => '',
+                    'prix_offre' => '',
+                    'quantite' => '',
+                    'description' => '',
+                    'image' => '',
+                    'categorie' => '',
+                    'categories' => $categories,
+                ];
+                
+                $this->view('pages/admin/add/addproduct',$data);
+            }
         }
         public function update(){
             if($_SERVER['REQUEST_METHOD']=='POST'){

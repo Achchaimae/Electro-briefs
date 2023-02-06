@@ -205,7 +205,7 @@
                         <button class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "><a href="<?= URLROOT; ?>/products/addproduct">Add</a></button>
                     </div>
 
-                    <div class="flex items-center justify-center ">
+                    <div class="flex items-center justify-center mx-4">
                         <div class="col-span-12">
                             <div class="overflow-auto lg:overflow-visible ">
                                 <table class="table text-gray-400 border-separate space-y-6 text-sm">
@@ -227,7 +227,7 @@
                                             <tr class="bg-gray-800">
                                                 <td class="p-3">
                                                     <div class="flex align-items-center">
-                                                        <img class="rounded-full h-12 w-12  object-cover" src="<?php echo $product->photo ?>" alt="product image">
+                                                        <img class="rounded-full h-12 w-12  object-cover" src="<?= URLROOT . '/img/upload/' . $product->image ?>" alt="product image">
                                                         <div class="ml-3">
                                                             <div class=""><?php echo $product->libelle; ?></div>
                                                             <div class="text-gray-500"><?php echo $product->ref; ?></div>
@@ -252,7 +252,7 @@
                                                 <td class="p-3 font-bold">
                                                     <?php echo $product->description; ?>
                                                 <td class="p-3">
-                                                    <span class="bg-green-400 text-gray-50 rounded-md px-2"><?php echo $product->categorie_id; ?></span>
+                                                    <span class="bg-green-400 text-gray-50 rounded-md px-2"><?php echo $product->name; ?></span>
                                                 </td>
                                                 <td class="p-3 ">
                                                     <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">

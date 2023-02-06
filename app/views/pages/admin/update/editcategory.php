@@ -18,7 +18,7 @@
 
 <body class="bg-blue-100">
 
-    <form action="<?= URLROOT; ?>/categories/add" method="POST" enctype="multipart/form-data">
+    <form action="<?= URLROOT . '/categories/editcategory/' . $data['id'] ; ?>" method="POST" enctype="multipart/form-data">
         <div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
             <div class="relative py-3 sm:max-w-xl sm:mx-auto">
                 <div class="relative px-4 py-10 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
@@ -34,11 +34,11 @@
                             <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                                 <div class="flex flex-col">
                                     <label class="leading-loose">Category Name</label>
-                                    <input type="text" name="name" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Event title">
+                                    <input type="text" name="name" value="<?php echo  $data['name'] ; ?>" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Event title">
                                 </div>
                                 <div class="flex flex-col">
                                     <label class="leading-loose">Category Description</label>
-                                    <input type="text" name="description" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Optional">
+                                    <input type="text" name="description"  value="<?php echo  $data['description'] ; ?>" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Optional">
                                 </div>
                                 <div class="flex flex-col">
                                     <label class="leading-loose">Category Image</label>

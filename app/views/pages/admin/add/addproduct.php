@@ -55,9 +55,11 @@
                     <input type="number" name="quantite" class="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                 </div>
                 <div>
-                    <label class="text-white dark:text-gray-200" for="passwordConfirmation">Category</label>
-                    <input type="text" name="categorie_id" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                </div>
+                    <select name="category" id="">
+                        <?php foreach($data['categories'] as $category) : ?>
+                            <option value="<?= $category->name; ?>"><?= $category->name; ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 <div>
                     <label class="text-white dark:text-gray-200" for="passwordConfirmation">description</label>
                     <textarea id="textarea" name="description" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"></textarea>

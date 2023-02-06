@@ -220,7 +220,7 @@
                                             <tr class="bg-gray-800">
                                                 <td class="p-3 flex justify-center">
                                                     <div class="flex align-items-center">
-                                                        <img class="rounded-full h-12 w-12  object-cover" src="<?php echo $categorie->photo; ?>" alt="unsplash image">
+                                                        <img class="rounded-full h-12 w-12  object-cover" src="<?= URLROOT . '/img/upload/' . $categorie->image ?>" alt="unsplash image">
 
                                                     </div>
                                                 </td>
@@ -235,7 +235,7 @@
                                                     <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
                                                         <i class="material-icons-outlined text-base">visibility</i>
                                                     </a>
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100  mx-2">
+                                                    <a href="<?php echo URLROOT . '/categories/editcategory/' . $categorie->id ?>" class="text-gray-400 hover:text-gray-100  mx-2">
                                                         <i class="material-icons-outlined text-base">edit</i>
                                                     </a>
                                                     <a href="<?php echo URLROOT . '/categories/delete/' . $categorie->id ?>" class="text-gray-400 hover:text-gray-100  ml-2">

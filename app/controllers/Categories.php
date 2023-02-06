@@ -46,20 +46,32 @@
             $this->view('pages/admin/add/addcategory',$data);
             }
         }
-        public function edit($id){
+        public function editcategory($id){
             if($_SERVER['REQUEST_METHOD']=='POST'){
                 $imgName = $_FILES['image']['name'];
                 $imgTmp = $_FILES['image']['tmp_name'];
-                $data=[
-
-                    'id' => $id,
-                    'name' => $_POST['name'],
-                    'description' => $_POST['description'],
-                    'image' => $imgName,
-                ];
+                move_uploaded_file($imgTmp,"img/upload/".$imgName);
+                
+                if(!empty($imgName)){   
+                    $data=[
+                        'id' => $id,
+                        'name' => $_POST['name'],
+                        'description' => $_POST['description'],
+                        'image' => $imgName,
+                    ];
+                } else {
+                    $category = $this->categorymodels->get($id);
+                    $data=[
+                        'id' => $id,
+                        'name' => $_POST['name'],
+                        'description' => $_POST['description'],
+                        'image' => $category->image,
+                    ];
+                }
+                
                 $test=$this->categorymodels->update($data);
                 if($test){
-                    redirect('pages/dashboard');
+                    redirect('categories/dashboard');
                 }
                 else{
                     die('Something went wrong');
@@ -73,7 +85,7 @@
                     'description' => $category->description,
                     'image' => $category->image,
                 ];
-                $this->view('pages/admin/edit/editcategory',$data);
+                $this->view('pages/admin/update/editcategory',$data);
             }
         }
              public function delete($id){

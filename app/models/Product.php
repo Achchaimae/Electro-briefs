@@ -7,13 +7,42 @@
         $this->db = new Database;
     }
     public function List(){
-        $this->db->query("SELECT * FROM product");
+        $this->db->query("SELECT p.*, c.name FROM product p INNER JOIN categorie c ON p.categorie_id = c.id");
+        $results = $this->db->resultSet();
+        return $results;
+    }
+    public function listascend(){
+        //order by prix_final asc
+        $this->db->query("SELECT * FROM `product` ORDER BY prix_achat ASC");
+        $results = $this->db->resultSet();
+        return $results;
+    }
+    public function listdescend(){
+        //order by prix_final desc
+        $this->db->query("SELECT * FROM `product` ORDER BY prix_achat DESC");
+        $results = $this->db->resultSet();
+        return $results;
+    }
+    public function listbycategory($id){
+        $this->db->query("SELECT * FROM product WHERE categorie_id=:id");
+        $this->db->bind(':id',$id);
         $results = $this->db->resultSet();
         return $results;
     }
     public function Get($id){
         $this->db->query("SELECT * FROM product WHERE id=:id");
         $this->db->bind(':id',$id);
+        $row = $this->db->single();
+        return $row;
+    }
+    public function category() {
+        $this->db->query("SELECT * FROM categorie");
+        $results = $this->db->resultSet();
+        return $results;
+    }
+    public function getCategoryByName($name) {
+        $this->db->query("SELECT * FROM categorie WHERE name=:name");
+        $this->db->bind(':name',$name);
         $row = $this->db->single();
         return $row;
     }
@@ -30,7 +59,7 @@
         $this->db->bind(':quantite',$data['quantite']);
         $this->db->bind(':description',$data['description']);
         $this->db->bind(':image',$data['image']);
-        $this->db->bind(':categorie_id',$data['categorie_id']);
+        $this->db->bind(':categorie_id',$data['categorie']);
         if($this->db->execute()){
             return true;
         }

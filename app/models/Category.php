@@ -32,8 +32,8 @@
                     return false;
                 }
             }
-            public function Update($data){
-                $this->db->query("UPDATE category SET name=:name WHERE id=:id");
+            public function update($data){
+                $this->db->query("UPDATE categorie SET name = :name, description = :description, image=:image  WHERE id=:id");
                 $this->db->bind(':id',$data['id']);
                 $this->db->bind(':name',$data['name']);
                 $this->db->bind(':description',$data['description']);
