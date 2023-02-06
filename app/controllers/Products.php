@@ -21,6 +21,22 @@
             ];
             $this->view('pages/product',$data);
         }
+        public function cart($id){
+            $products = $this->productmodels->get($id);
+            $data = [
+                'libelle' => $products->libelle,
+                'price' => $products->prix_final,
+                'image' => $products->image,
+                'description' => $products->description,
+                'id' => $products->id,
+                'ref' => $products->ref,
+                'code_barre' => $products->code_barre,
+                'prix_achat' => $products->prix_achat,
+                'prix_offre' => $products->prix_offre,
+                'quantite' => $products->quantite,
+            ];
+            $this->view('pages/user/cart',$data);
+        }
         public function listascend(){
             $products = $this->productmodels->listascend();
             $categories = $this->productmodels->category();
@@ -30,6 +46,23 @@
             ];
             $this->view('pages/product',$data);
         }
+        public function aboutProduct($id){
+            $products = $this->productmodels->get($id);
+            $data = [
+                'name' => $products->libelle,
+                'price' => $products->prix_final,
+                'image' => $products->image,
+                'description' => $products->description,
+                'id' => $products->id,
+                'ref' => $products->ref,
+                'code_barre' => $products->code_barre,
+                'prix_achat' => $products->prix_achat,
+                'prix_offre' => $products->prix_offre,
+                'quantite' => $products->quantite,
+            ];
+      
+            $this->view('pages/aboutProduct', $data);
+          }
         public function listdescend(){
             $products = $this->productmodels->listdescend();
             $categories = $this->productmodels->category();
@@ -37,6 +70,7 @@
                 'products' => $products,
                 'categories' => $categories
             ];
+
             $this->view('pages/product',$data);
         }
         public function listbycategory($id){

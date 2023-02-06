@@ -1,8 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['email'])) {
-    header('Location: ../View/login.php');
-}
+    print_r($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +16,18 @@ if (!isset($_SESSION['email'])) {
     <link rel="stylesheet" href="../assets/build/output.css">
     <!-- link to font awesome -->
     <script src="https://kit.fontawesome.com/93e0a23dda.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../assets/css/cart.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to CSS file -->
+    <link href="<?= URLROOT; ?>/css/cart.css" rel="stylesheet">
+    <!-- link tailwind css -->
+    <link href="<?= URLROOT; ?>/dist/output.css" rel="stylesheet">
+
+    <!-- link to font awesome -->
+    <script src="https://kit.fontawesome.com/93e0a23dda.js" crossorigin="anonymous"></script>
+
     <title>home</title>
 </head>
 
@@ -36,10 +45,10 @@ if (!isset($_SESSION['email'])) {
                 <div class="my-price">
                     <img src="../assets/image/headset4.png" alt="produit">
                     <div>
-                        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
+                        <h3><?= $data['libelle'] ?></h3>
                         <div class="more-pro">
                             <button class=" bg-blue-800 text-white">-</button>
-                            <p> 1</p>
+                            <p> <?= $data['quantite'] ?></p>
                             <button class=" bg-blue-800 text-white">+</button>
                         </div>
                     </div>

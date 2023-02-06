@@ -2,40 +2,40 @@
 <html lang="en">
 
 <head>
+<meta charset="UTF-8">
+    <link rel="stylesheet" href="../assets/css/cart.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Link to CSS file -->
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="<?= URLROOT; ?>/css/mystyle.css" rel="stylesheet">
     <!-- link tailwind css -->
-    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/build/output.css">
+    <link href="<?= URLROOT; ?>/dist/output.css" rel="stylesheet">
+
     <!-- link to font awesome -->
     <script src="https://kit.fontawesome.com/93e0a23dda.js" crossorigin="anonymous"></script>
-    <title>home</title>
+
+    <title>about product</title>
 </head>
 
 <body>
-    <section>
-        <?php include_once 'includes/header.php'; ?>
-    </section>
+    
     <section class="product-p mt-8">
         <div class="product">
             <div class="about-product">
                 <div>
                     <div>
-                        <img src="../assets/image/headset2.png" alt="headset" class="rounded bg-gray-300 m-2 w-60 p-4">
+                        <img src="<?= URLROOT . '/img/upload/' . $data['image']?>" alt="headset" class="rounded bg-gray-300 m-2 w-60 p-4">
                     </div>
                     <div class="product-img">
-                        <img src="../assets/image/headset2.png" alt="headset" class="rounded bg-gray-300 m-2 w-16 p-2">
-                        <img src="../assets/image/headset2.png" alt="headset" class="rounded bg-gray-300 m-2 w-16 p-2">
-                        <img src="../assets/image/headset2.png" alt="headset" class="rounded bg-gray-300 m-2 w-16 p-2">
+                        <img src="<?= URLROOT . '/img/upload/' . $data['image']?>" alt="headset" class="rounded bg-gray-300 m-2 w-16 p-2">
+                        <img src="<?= URLROOT . '/img/upload/' . $data['image']?>" alt="headset" class="rounded bg-gray-300 m-2 w-16 p-2">
+                        <img src="<?= URLROOT . '/img/upload/' . $data['image']?>" alt="headset" class="rounded bg-gray-300 m-2 w-16 p-2">
                     </div>
                 </div>
 
                 <div class="info-product">
-                    <h3 class="font-bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed
-                        dignissim, metus nec fringilla accumsan, risus sem</h3>
+                    <h3 class="font-bold"><?php echo $data['name'] ?></h3>
                     <div class="tobuy">
                         <div class="text-red flex-row justify-between">
 
@@ -45,30 +45,22 @@
                             <i class="fa-solid fa-star  text-yellow-500"></i>
                             <i class="fa-solid fa-star"></i>
                         </div>
-                        <button class="price-btn bg-blue-700 rounded-md p-2 text-white font-bold"><span class="text-red-600"> -10% </span> 59 $</button>
+                        <button class="price-btn bg-blue-700 rounded-md p-2 text-white font-bold"><span class="text-red-600"> -10% </span> <?= $data['prix_achat']; ?> $</button>
                         <h3 class="font-semibold">Free Shipping</h3>
-                        <p>From China to Morocco via Cainiao Super Economy for Special Goods
-                            Estimated delivery on Feb 19</p>
+                        <p><?php echo $data['description'] ?></p>
                     </div>
                 </div>
             </div>
             <div class="receipt rounded p-2 ">
-                <p class="font-5/16 font-bold text-6xl">59 $</p>
+                <p class="font-5/16 font-bold text-6xl"><?= $data['prix_achat']; ?> $</p>
                 <p class="text-green-600 font-medium ">In stock</p>
                 <p class="text-base">delevery December 21 - 28</p>
                 <select name="quantite" value="quantite" class="text-center border-blue-800 rounded p-1 text-black">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
+                    <?php for($i = 1; $i < $data['quantite']; $i++) { ?>
+                        <option value="<?= $i; ?>"><?= $i; ?></option>
+                    <?php } ?>
                 </select>
-                <button class="border-solid border-2 border-blue-800 p-2 rounded-lg hover:bg-blue-700 hover:text-white"> <a href="cart.php"> add to cart</a></button>
+                <button class="border-solid border-2 border-blue-800 p-2 rounded-lg hover:bg-blue-700 hover:text-white"> <a href="<?php echo URLROOT . '/products/cart/'. $data['id']; ?>">add to cart</a></button>
                 <button class="bg-blue-700 text-white rounded p-2 hover:bg-blue-700 " onclick="Swal.fire({
   position: 'center ',
   icon: 'success',
