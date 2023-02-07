@@ -55,19 +55,15 @@
                 <p class="font-5/16 font-bold text-6xl"><?= $data['prix_achat']; ?> $</p>
                 <p class="text-green-600 font-medium ">In stock</p>
                 <p class="text-base">delevery December 21 - 28</p>
-                <select name="quantite" value="quantite" class="text-center border-blue-800 rounded p-1 text-black">
-                    <?php for($i = 1; $i < $data['quantite']; $i++) { ?>
-                        <option value="<?= $i; ?>"><?= $i; ?></option>
-                    <?php } ?>
-                </select>
-                <button class="border-solid border-2 border-blue-800 p-2 rounded-lg hover:bg-blue-700 hover:text-white"> <a href="<?php echo URLROOT . '/products/cart/'. $data['id']; ?>">add to cart</a></button>
-                <button class="bg-blue-700 text-white rounded p-2 hover:bg-blue-700 " onclick="Swal.fire({
-  position: 'center ',
-  icon: 'success',
-  title: 'Your order has been saved',
-  showConfirmButton: false,
-  timer: 1500
-})"> Buy Now </button>
+                <form action="<?php echo URLROOT . '/products/addToCart/'. $data['id']; ?>" method="POST">
+                    <select name="quantite" value="quantite" class="text-center border-blue-800 rounded p-1 text-black">
+                        <?php for($i = 1; $i < $data['quantite']; $i++) { ?>
+                            <option value="<?= $i; ?>"><?= $i; ?></option>
+                        <?php } ?>
+                    </select>
+                    <button class="border-solid border-2 border-blue-800 p-2 rounded-lg hover:bg-blue-700 hover:text-white"> add to cart</button>
+                </form>
+                
             </div>
         </div>
         <div class=" w-8/12 m-6 ">

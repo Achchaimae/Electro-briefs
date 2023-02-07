@@ -105,6 +105,29 @@
     //     return $results;
     // }
 
+    public function getProductByCategory($id){
+        $this->db->query("SELECT * FROM product WHERE product.categorie_id = :id");
+        $this->db->bind(':id',$id);
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
+    public function setToCart($data) {
+        $this->db->query("INSERT INTO cart (id_product, id_client, quantite_c) VALUES (:id_p, :id_c, :quantity)");
+        $this->db->bind(':id_p', $data['id_product']);
+        $this->db->bind(':id_c', $data['id_client']);
+        $this->db->bind(':quantity', $data['quantite']);
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function getCart() {
+        $this->db->query("SELECT * FROM cart INNER JOIN product ON cart.id_product = product.id");
+        $results = $this->db->resultSet();
+        return $results;
+    }
  }
 
 

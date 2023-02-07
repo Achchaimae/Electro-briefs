@@ -46,7 +46,8 @@ class Autho extends Controller{
         }
         else{
             $_SESSION['user'] = $adm->email;
-            redirect('pages/index');
+            $_SESSION['user_id'] = $adm->id;
+            redirect('pages/user/cart');
         }
     }
     

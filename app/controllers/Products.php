@@ -21,21 +21,32 @@
             ];
             $this->view('pages/product',$data);
         }
-        public function cart($id){
-            $products = $this->productmodels->get($id);
+        public function cart() {
+            $cart = $this->productmodels->getCart();
             $data = [
-                'libelle' => $products->libelle,
-                'price' => $products->prix_final,
-                'image' => $products->image,
-                'description' => $products->description,
-                'id' => $products->id,
-                'ref' => $products->ref,
-                'code_barre' => $products->code_barre,
-                'prix_achat' => $products->prix_achat,
-                'prix_offre' => $products->prix_offre,
-                'quantite' => $products->quantite,
+                'cart' => $cart,
             ];
             $this->view('pages/user/cart',$data);
+        }
+        public function addToCart($id){
+            if(!isLoggedIn())
+                redirect('autho/login');
+        
+            $product = $this->productmodels->get($id);
+
+            $data = [
+                'id' => $id,
+                'id_client' => $_SESSION['user_id'],
+                'id_product' => $product->id,
+                'quantite' => $_POST['quantite'],
+            ];
+            $addtocart = $this->productmodels->setToCart($data);
+            if ($addtocart) {
+                redirect('Products/cart');
+            } else {
+                die('something wrong');
+            }
+            
         }
         public function listascend(){
             $products = $this->productmodels->listascend();
@@ -192,4 +203,13 @@
             redirect('Products/dashboard');
         }
     }
+    public function selectByCategory($id) {
+        $products = $this->productmodels->getProductByCategory($id);
+        $categories = $this->productmodels->category();
+        $data = [
+            'products' => $products,
+            'categories' => $categories
+        ];
+        $this->view('pages/product', $data);
     }
+}

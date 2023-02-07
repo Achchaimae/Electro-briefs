@@ -1,5 +1,7 @@
 <?php
-    print_r($data);
+    echo '<pre>';
+    print_r($data['cart']);
+    echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,30 +44,20 @@
                 <p> SAFI, Marrakech - Safi, Morocco, 40060</p>
             </div>
             <div class="product-buy">
-                <div class="my-price">
-                    <img src="../assets/image/headset4.png" alt="produit">
-                    <div>
-                        <h3><?= $data['libelle'] ?></h3>
-                        <div class="more-pro">
-                            <button class=" bg-blue-800 text-white">-</button>
-                            <p> <?= $data['quantite'] ?></p>
-                            <button class=" bg-blue-800 text-white">+</button>
+                <?php foreach ($data['cart'] as $cart) : ?>
+                    <div class="my-price">
+                        <img src="<?= URLROOT . '/img/upload/' . $cart->image; ?>" alt="produit">
+                        <div>
+                            <h3><?= $cart->libelle ?></h3>
+                            <div class="more-pro">
+                                <button class=" bg-blue-800 text-white">-</button>
+                                <p> <?= $cart->quantite_c ?></p>
+                                <button class=" bg-blue-800 text-white">+</button>
+                            </div>
                         </div>
                     </div>
-
-                </div>
-                <div class="my-price">
-                    <img src="../assets/image/headset1.png" alt="produit">
-                    <div>
-                        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
-                        <div class="more-pro">
-                            <button class=" bg-blue-800 text-white"> - </button>
-                            <p> 1</p>
-                            <button class=" bg-blue-800 text-white"> + </button>
-                        </div>
-                    </div>
-
-                </div>
+                <?php endforeach; ?>
+                
             </div>
         </div>
         <div class="cart-recep border-black">
@@ -73,7 +65,7 @@
                 <h3 class="font-bold text-2xl">Summary</h3>
                 <div class="my-pric">
                     <p>total iteam costs </p>
-                    <p>1 qty x 59</p>
+                    <p><?= $data['cart'][0]->quantite_c; ?> qty x <?= $data['cart'][0]->prix_final; ?></p>
                 </div>
                 <div class="my-price">
                     <p>total Shipping</p>
@@ -82,18 +74,14 @@
                 <hr>
                 <div class="my-price">
                     <p>total</p>
-                    <p>59</p>
+                    <p><?= $data['cart'][0]->quantite_c * $data['cart'][0]->prix_final;  ?></p>
                 </div>
             </div>
 
 
-            <button class="bg-blue-800 rounded-lg p-2 justify-center text-white" onclick="Swal.fire({
-  position: 'center ',
-  icon: 'success',
-  title: 'Your order has been saved',
-  showConfirmButton: false,
-  timer: 1500
-})">Place Order</button>
+            <button class="bg-blue-800 rounded-lg p-2 justify-center text-white" onclick="Swal.fire({ position: 'center ', icon: 'success', title: 'Your order has been saved', showConfirmButton: false, timer: 1500})">
+                Place Order
+            </button>
 
         </div>
 

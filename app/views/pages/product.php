@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,12 +73,14 @@
 
 
         
-        <select name="category" class="my-auto w-3/5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-        
-                        <?php foreach($data['categories'] as $category) : ?>
-                            <option value="<?= $category->name; ?>"><?= $category->name; ?></option>
-                        <?php endforeach; ?>
-        </select>
+    <!-- Dropdown menu -->
+        <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
+            <?php foreach($data['categories'] as $category) : ?>
+                <li>
+                    <a href="<?= URLROOT . '/products/selectByCategory/' . $category->id ; ?>" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><?= $category->name; ?></a>
+                </li>
+            <?php endforeach; ?>
+        </ul>        
 
 
     </section>
