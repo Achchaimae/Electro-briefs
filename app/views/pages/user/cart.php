@@ -45,9 +45,9 @@
                         <div>
                             <h3><?= $cart->libelle ?></h3>
                             <div class="more-pro">
-                                <button class=" bg-blue-800 text-white" id="minus">-</button>
-                                <p id="quantite"> <?= $cart->quantite_c ?></p>
-                                <button class=" bg-blue-800 text-white" id="plus">+</button>
+                                <button class="minus bg-blue-800 text-white" >-</button>
+                                <p class="quantite"> <?= $cart->quantite_c ?></p>
+                                <button class=" plus bg-blue-800 text-white">+</button>
                             </div>
                         </div>
                     </div>
@@ -72,9 +72,9 @@
             </div>
 
 
-            <button class="bg-blue-800 rounded-lg p-2 justify-center text-white" onclick="Swal.fire({ position: 'center ', icon: 'success', title: 'Your order has been saved', showConfirmButton: false, timer: 1500})">
-                Place Order
-            </button>
+            <a href="<?= URLROOT . '/Products/cart';?>" id="orderNow" class="bg-blue-800 rounded-lg p-2 justify-center text-white" onclick="Swal.fire({ position: 'center ', icon: 'success', title: 'Your order has been saved', showConfirmButton: false, timer: 1500})">
+               Place Order
+            </a>
 
         </div>
 
@@ -82,19 +82,18 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    const minus = document.getElementById('minus');
-    const plus = document.getElementById('plus');
-    const quantite = document.getElementById('quantite');
-    let qte = 1;
-    minus.addEventListener('click', () => {
-        if (qte > 1) {
-            qte--;
-            quantite.innerHTML = qte;
-        }
-    });
-    plus.addEventListener('click', () => {
-        qte++;
-        quantite.innerHTML = qte;
+    let order = document.getElementById('orderNow');
+    let test;
+    order.addEventListener('click', () => {
+        test = setTimeout(() => {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Your order has been saved',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }, 2000);
     });
 </script>
 
