@@ -67,7 +67,7 @@
                 <hr>
                 <div class="my-price">
                     <p>total</p>
-                    <p><?= $data['cart'][0]->quantite_c * $data['cart'][0]->prix_final;  ?></p>
+                    <p><?= $data['total_price']; ?></p>
                 </div>
             </div>
 

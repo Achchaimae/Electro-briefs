@@ -24,6 +24,8 @@
             $this->view('pages/product',$data);
         }
         public function cart() {
+            if(!isLoggedIn())
+                redirect('autho/login');
             $client= $this->clientmodels->getClient($_SESSION['user_id']);
             $cart = $this->productmodels->getProductCart();
             $total=$this->productmodels->totalPrice();
@@ -35,7 +37,7 @@
                 'adresse' => $client->adresse,
                 'telephone' => $client->telephone,
                 'ville' => $client->ville,
-                'total_price' => '0'
+                'total_price' => $total->total
             ];
             $this->view('pages/user/cart',$data);
         }
@@ -44,19 +46,19 @@
             if(!isLoggedIn())
                 redirect('autho/login');
 
-            $cart = $this->productmodels->getCart();
+            $checkProductExist = $this->productmodels->getCart($id);
+
             // echo '<pre>';
-            // print_r($cart[0]);
-            // echo '</pre>';
+            // print_r($cart);
+            // echo '<pre>';
             // exit;
-            if($cart[0]->id_product == $id){
+            if($checkProductExist->id_product == $id){
                  $data = [
                     'id' => $id,
-                    'id_client' => $cart[0]->id_client,
-                    'id_product' => $cart[0]->id_product,
-                    'quantite' => $_POST['quantite']+$cart[0]->quantite_c,
+                    'id_client' => $checkProductExist->id_client,
+                    'id_product' => $checkProductExist->id_product,
+                    'quantite' => $_POST['quantite']+$checkProductExist->quantite_c,
                 ];
-                
                 $updateProduct = $this->productmodels->updateCart($data);
 
                 if ($updateProduct) {
@@ -66,11 +68,13 @@
                 }
             } else {
                 $data = [
+                    'id' => $id,
                     'id_client' => $_SESSION['user_id'],
                     'id_product' => $id,
                     'quantite' => $_POST['quantite'],
                 ];
                 $addtocart = $this->productmodels->setToCart($data);
+
                 if ($addtocart) {
                     redirect('Products/cart');
                 } else {

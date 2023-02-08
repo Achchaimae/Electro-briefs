@@ -118,14 +118,15 @@
         $this->db->bind(':id_c', $data['id_client']);
         $this->db->bind(':quantity', $data['quantite']);
         if ($this->db->execute()) {
-            return true;
+            return 'set';
         } else {
             return false;
         }
     }
-    public function getCart() {
-        $this->db->query("SELECT * FROM cart INNER JOIN product ON cart.id_product = product.id");
-        $results = $this->db->resultSet();
+    public function getCart($id) {
+        $this->db->query("SELECT * FROM cart INNER JOIN product on cart.id_product = :id");
+        $this->db->bind(':id', $id);
+        $results = $this->db->single();
         return $results;
     }
     public function getProductCart() {
@@ -138,13 +139,13 @@
         $this->db->bind(':id_p', $data['id_product']);
         $this->db->bind(':quantity', $data['quantite']);
         if ($this->db->execute()) {
-            return 'true';
+            return 'updated';
         } else {
             return false;
         }
     }
     public function totalPrice() {
-        $this->db->query("SELECT SUM(prix_final * quantite_c) AS total FROM cart INNER JOIN product");
+        $this->db->query("SELECT SUM(quantite_c * prix_final) AS total FROM cart INNER JOIN product ON cart.id_product = product.id;");
         $row = $this->db->single();
         return $row;
     }
