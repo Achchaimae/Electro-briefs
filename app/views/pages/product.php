@@ -69,12 +69,10 @@
         </li>
         
     </div>
-
-
-
-        
-    <!-- Dropdown menu -->
-        <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
+    <button id="dropdownDefaultButton" data-dropdown-toggle="Category" class="text-center w-[70%] text-white bg-gray-50 border border-gray-300 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5  inline-flex items-center dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-800 flex justify-between px-4" type="button">categorie <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+    <div id="Category" class="z-10 hidden w-[80%] bg-white divide-y divide-gray-100 rounded-lg shadow  dark:bg-gray-700">
+     <!-- Dropdown menu -->
+     <ul class="py-2 text-sm text-gray-700 text-center dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
             <?php foreach($data['categories'] as $category) : ?>
                 <li>
                     <a href="<?= URLROOT . '/products/selectByCategory/' . $category->id ; ?>" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><?= $category->name; ?></a>
@@ -82,6 +80,10 @@
             <?php endforeach; ?>
         </ul>        
 
+    </div>
+
+        
+   
 
     </section>
     <section class="bg-blue-100 flex flex-row flex-wrap justify-center m-4 items-center gap-7">
@@ -90,7 +92,7 @@
 
             <div class="w-full h-auto max-w-sm  py-4 bg-white rounded-lg shadow-md my-auto ">
                 <a href="#" class="flex justify-center">
-                    <img class="p-8 rounded-t-lg -center" src="<?= URLROOT . '/img/upload/' . $product->image ?> " alt="product image" />
+                    <img class="p-8 rounded-t-lg -center h-[15rem]" src="<?= URLROOT . '/img/upload/' . $product->image ?> " alt="product image" />
                 </a>
                 <div class="px-5 pb-5">
                     <a href="#">

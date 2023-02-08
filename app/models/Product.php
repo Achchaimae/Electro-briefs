@@ -128,6 +128,26 @@
         $results = $this->db->resultSet();
         return $results;
     }
+    public function getProductCart() {
+        $this->db->query("SELECT * FROM cart INNER JOIN product ON cart.id_product = product.id");
+        $row = $this->db->resultSet();
+        return $row;
+    }
+    public function updateCart($data) {
+        $this->db->query("UPDATE cart SET quantite_c = :quantity WHERE id_product = :id_p");
+        $this->db->bind(':id_p', $data['id_product']);
+        $this->db->bind(':quantity', $data['quantite']);
+        if ($this->db->execute()) {
+            return 'true';
+        } else {
+            return false;
+        }
+    }
+    public function totalPrice() {
+        $this->db->query("SELECT SUM(prix_final * quantite_c) AS total FROM cart INNER JOIN product");
+        $row = $this->db->single();
+        return $row;
+    }
  }
 
 

@@ -1,7 +1,9 @@
 <?php
     class Products extends Controller{
         public $productmodels;
+        public $clientmodels;
         public function __construct(){
+            $this->clientmodels=$this->model('Client');
             $this->productmodels=$this->model('Product');
         }
         public function dashboard(){
@@ -22,29 +24,58 @@
             $this->view('pages/product',$data);
         }
         public function cart() {
-            $cart = $this->productmodels->getCart();
+            $client= $this->clientmodels->getClient($_SESSION['user_id']);
+            $cart = $this->productmodels->getProductCart();
+            $total=$this->productmodels->totalPrice();
             $data = [
                 'cart' => $cart,
+                'name' => $client->nom,
+                'prenom' => $client->prenom,
+                'email' => $client->email,
+                'adresse' => $client->adresse,
+                'telephone' => $client->telephone,
+                'ville' => $client->ville,
+                'total_price' => '0'
             ];
             $this->view('pages/user/cart',$data);
         }
         public function addToCart($id){
+
             if(!isLoggedIn())
                 redirect('autho/login');
-        
-            $product = $this->productmodels->get($id);
 
-            $data = [
-                'id' => $id,
-                'id_client' => $_SESSION['user_id'],
-                'id_product' => $product->id,
-                'quantite' => $_POST['quantite'],
-            ];
-            $addtocart = $this->productmodels->setToCart($data);
-            if ($addtocart) {
-                redirect('Products/cart');
+            $cart = $this->productmodels->getCart();
+            // echo '<pre>';
+            // print_r($cart[0]);
+            // echo '</pre>';
+            // exit;
+            if($cart[0]->id_product == $id){
+                 $data = [
+                    'id' => $id,
+                    'id_client' => $cart[0]->id_client,
+                    'id_product' => $cart[0]->id_product,
+                    'quantite' => $_POST['quantite']+$cart[0]->quantite_c,
+                ];
+                
+                $updateProduct = $this->productmodels->updateCart($data);
+
+                if ($updateProduct) {
+                    redirect('Products/cart');
+                } else {
+                    die('something wrong');
+                }
             } else {
-                die('something wrong');
+                $data = [
+                    'id_client' => $_SESSION['user_id'],
+                    'id_product' => $id,
+                    'quantite' => $_POST['quantite'],
+                ];
+                $addtocart = $this->productmodels->setToCart($data);
+                if ($addtocart) {
+                    redirect('Products/cart');
+                } else {
+                    die('something wrong');
+                }
             }
             
         }

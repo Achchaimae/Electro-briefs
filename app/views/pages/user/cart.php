@@ -1,8 +1,3 @@
-<?php
-    echo '<pre>';
-    print_r($data['cart']);
-    echo '</pre>';
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,10 +33,10 @@
         <div class="cart-info">
             <div class="ship-info ">
                 <h1 class="font-bold text-2xl">Shipping Address</h1><br>
-                <p>Achchaimae khalaf</p><br>
-                <p> +212 682751559</p><br>
-                <p>Lots wiaam 2 rue 33 n 2</p><br>
-                <p> SAFI, Marrakech - Safi, Morocco, 40060</p>
+                <p><?= $data['name'] . ' ' . $data['prenom']; ?></p><br>
+                <p><?= $data['telephone'] ?></p><br>
+                <p><?= $data['adresse'] ?></p><br>
+                <p> <?= $data['adresse'] . ', ' . $data['ville']; ?></p>
             </div>
             <div class="product-buy">
                 <?php foreach ($data['cart'] as $cart) : ?>
@@ -63,13 +58,11 @@
         <div class="cart-recep border-black">
             <div>
                 <h3 class="font-bold text-2xl">Summary</h3>
-                <div class="my-pric">
-                    <p>total iteam costs </p>
-                    <p><?= $data['cart'][0]->quantite_c; ?> qty x <?= $data['cart'][0]->prix_final; ?></p>
-                </div>
-                <div class="my-price">
-                    <p>total Shipping</p>
-                    <p>Free</p>
+                <p class="font-semibold ">total iteam costs : </p>
+                <div class="flex flex-col items-center">
+                    <?php foreach ($data['cart'] as $cart) : ?>
+                        <p><?= $cart->quantite_c; ?> qty x <?= $cart->prix_final; ?></p> <br>
+                    <?php endforeach ?>
                 </div>
                 <hr>
                 <div class="my-price">
