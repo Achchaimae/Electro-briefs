@@ -181,27 +181,49 @@
                 $this->view('pages/admin/add/addproduct',$data);
             }
         }
-        public function update(){
+        public function update($id){
+            
+            
             if($_SERVER['REQUEST_METHOD']=='POST'){
+
                 $imgName = $_FILES['image']['name'];
                 $imgTmp = $_FILES['image']['tmp_name'];
                 move_uploaded_file($imgTmp, 'img/upload/' . $imgName);
-                $data= [
-                    'id' => $_POST['id'],
-                    'ref' => $_POST['ref'],
-                    'libelle' => $_POST['libelle'],
-                    'code_barre' => $_POST['code_barre'],
-                    'prix_achat' => $_POST['prix_achat'],
-                    'prix_final' => $_POST['prix_final'],
-                    'prix_offre' => $_POST['prix_offre'],
-                    'quantite' => $_POST['quantite'],
-                    'description' => $_POST['description'],
-                    'image' => $_FILES['image'],
-                    'categorie_id' => $_POST['categorie_id'],
-                ];
+
+                if(!empty($imgName)){
+                    $data= [
+                        'id' => $id,
+                        'ref' => $_POST['ref'],
+                        'libelle' => $_POST['libelle'],
+                        'code_barre' => $_POST['code_barre'],
+                        'prix_achat' => $_POST['prix_achat'],
+                        'prix_final' => $_POST['prix_final'],
+                        'prix_offre' => $_POST['prix_offre'],
+                        'quantite' => $_POST['quantite'],
+                        'description' => $_POST['description'],
+                        'image' => $imgName,
+                        'categorie_id' => $_POST['category'],
+                    ];
+                }else{
+                    $product =$this->productmodels->get($id);
+                    $data = [
+                        'id' => $id,
+                        'ref' => $_POST['ref'],
+                        'libelle' => $_POST['libelle'],
+                        'code_barre' => $_POST['code_barre'],
+                        'prix_achat' => $_POST['prix_achat'],
+                        'prix_final' => $_POST['prix_final'],
+                        'prix_offre' => $_POST['prix_offre'],
+                        'quantite' => $_POST['quantite'],
+                        'description' => $_POST['description'],
+                        'image' => $product->image,
+                        'categorie_id' => $_POST['category'],
+                    ];
+                }
+                
                 $test=$this->productmodels->update($data);
                 if($test){
-                    redirect('pages/dashboard');
+                    redirect('products/dashboard');
                 }
                 else{
                     die('Something went wrong');
@@ -209,20 +231,23 @@
 
             }
             else  {
+                $categories = $this->productmodels->category();
+                $product =$this->productmodels->get($id);
                 $data=[
-                    'id' => '',
-                    'ref' => '',
-                    'libelle' => '',
-                    'code_barre' => '',
-                    'prix_achat' => '',
-                    'prix_final' => '',
-                    'prix_offre' => '',
-                    'quantite' => '',
-                    'description' => '',
-                    'image' => '',
-                    'categorie_id' => '',
+                    'id' => $product->id,
+                    'ref' => $product->ref,
+                    'libelle' => $product->libelle,
+                    'code_barre' => $product->code_barre,
+                    'prix_achat' => $product->prix_achat,
+                    'prix_final' => $product->prix_final,
+                    'prix_offre' => $product->prix_offre,
+                    'quantite' => $product->quantite,
+                    'description' => $product->description,
+                    'image' => $product->image,
+                    'categorie_id' => $product->categorie_id,
+                    'categories' => $categories,
                 ];
-                $this->view('pages/updateproduct',$data);
+                $this->view('pages/admin/update/editproduct',$data);
         }
         }
     public function delete($id)

@@ -28,7 +28,7 @@
     <title>home</title>
 </head>
 
-<body class="bg-blue-100">
+<body class="bg-blue-100 overflow-x-hidden">
     <section class="cart-sec m-4 rounded p-4">
         <div class="cart-info">
             <div class="ship-info ">
@@ -45,9 +45,9 @@
                         <div>
                             <h3><?= $cart->libelle ?></h3>
                             <div class="more-pro">
-                                <button class=" bg-blue-800 text-white">-</button>
-                                <p> <?= $cart->quantite_c ?></p>
-                                <button class=" bg-blue-800 text-white">+</button>
+                                <button class=" bg-blue-800 text-white" id="minus">-</button>
+                                <p id="quantite"> <?= $cart->quantite_c ?></p>
+                                <button class=" bg-blue-800 text-white" id="plus">+</button>
                             </div>
                         </div>
                     </div>
@@ -81,5 +81,21 @@
     </section>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const minus = document.getElementById('minus');
+    const plus = document.getElementById('plus');
+    const quantite = document.getElementById('quantite');
+    let qte = 1;
+    minus.addEventListener('click', () => {
+        if (qte > 1) {
+            qte--;
+            quantite.innerHTML = qte;
+        }
+    });
+    plus.addEventListener('click', () => {
+        qte++;
+        quantite.innerHTML = qte;
+    });
+</script>
 
 </html>

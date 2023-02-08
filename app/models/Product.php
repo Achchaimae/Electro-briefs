@@ -68,7 +68,7 @@
         }
     }
     public function Update($data){
-        $this->db->query("UPDATE product SET ref=:ref,libelle=:libelle,code_barre=:code_barre,prix_achat=:prix_achat,prix_final=:prix_final,prix_offre=:prix_offre,quantite=:quantite,description=:description,image=:image,categorie_id=:categorie_id WHERE id=:id");
+        $this->db->query("UPDATE product SET ref=:ref, libelle=:libelle, code_barre=:code_barre, prix_achat=:prix_achat, prix_final=:prix_final, prix_offre=:prix_offre, quantite=:quantite, description=:description, image=:image, categorie_id=:categorie_id WHERE id = :id");
         $this->db->bind(':id',$data['id']);
         $this->db->bind(':ref',$data['ref']);
         $this->db->bind(':libelle',$data['libelle']);
@@ -97,13 +97,6 @@
             return false;
         }
     }
-    // search function
-    // public function Search($name){
-    //     $this->db->query("SELECT * FROM product WHERE name LIKE :name");
-    //     $this->db->bind(':name','%'.$name.'%');
-    //     $results = $this->db->resultSet();
-    //     return $results;
-    // }
 
     public function getProductByCategory($id){
         $this->db->query("SELECT * FROM product WHERE product.categorie_id = :id");

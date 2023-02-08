@@ -227,10 +227,10 @@
                                             <tr class="bg-gray-800">
                                                 <td class="p-3">
                                                     <div class="flex align-items-center">
-                                                        <img class="rounded-full h-12 w-12  object-cover" src="<?= URLROOT . '/img/upload/' . $product->image ?>" alt="product image">
+                                                        <!-- <img class="rounded-full h-12 w-12  object-cover" src="<?= URLROOT . '/img/upload/' . $product->image ?>" alt="product image"> -->
                                                         <div class="ml-3">
                                                             <div class=""><?php echo $product->libelle; ?></div>
-                                                            <div class="text-gray-500"><?php echo $product->ref; ?></div>
+                                                            <!-- <div class="text-gray-500"><?php echo $product->ref; ?></div> -->
                                                         </div>
                                                     </div>
                                                 </td>
@@ -258,7 +258,7 @@
                                                     <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
                                                         <i class="material-icons-outlined text-base">visibility</i>
                                                     </a>
-                                                    <a href="#" class="text-gray-400 hover:text-gray-100  mx-2">
+                                                    <a href="<?php echo URLROOT . '/products/update/' . $product->id ?>" class="text-gray-400 hover:text-gray-100  mx-2">
                                                         <i class="material-icons-outlined text-base">edit</i>
                                                     </a>
                                                     <a href="<?php echo URLROOT . '/products/delete/' . $product->id ?>" class="text-gray-400 hover:text-gray-100  ml-2">
