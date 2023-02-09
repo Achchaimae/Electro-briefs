@@ -29,6 +29,7 @@
 </head>
 
 <body class="bg-blue-100 overflow-x-hidden">
+    
     <section class="cart-sec m-4 rounded p-4">
         <div class="cart-info">
             <div class="ship-info ">

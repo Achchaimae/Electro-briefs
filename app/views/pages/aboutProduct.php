@@ -19,7 +19,37 @@
 </head>
 
 <body>
-    
+<section class="hero">
+        <div class="flex flex-row gap-4 items-center">
+            <div class="logo ">
+                <a href="#"><img src="<?= URLROOT; ?>/img/mobile logo.png" alt="logo"></a>
+            </div>
+            <div class="flex flex-row gap-4">
+                <div>
+                    <b><a href="<?= URLROOT; ?>/products/user">categorie</a></b>
+                </div>
+                <div>
+                    <b><a href="View/Contact.php">Contact Us</a></b>
+                </div>
+                <div>
+                    <b><a href="View/AboutUs.php">About Us</a></b>
+                </div>
+            </div>
+
+        </div>
+        <div class="icons">
+            <div class="icon-item">
+                <a href="<?= URLROOT; ?>/autho/login">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </div>
+            <div>
+                <a href="View/cart.php">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+            </div>
+        </div>
+    </section>
     <section class="product-p mt-8">
         <div class="product">
             <div class="about-product">
@@ -33,27 +63,35 @@
                         <img src="<?= URLROOT . '/img/upload/' . $data['image']?>" alt="headset" class="rounded bg-gray-300 m-2 w-16 p-2">
                     </div>
                 </div>
+                   
+                    <div class="info-product bg-gray-200 flex flex-wrap flex-start gap-4 h-96 justify-between rounded w-[70%]">
+                        <div class="flex flex-col gap-2 justify-between p-4 w-full ">
+                            <div class="flex flex-col  justify-between items-start ml-6 mt-4">
+                                <h3 class="font-bold"><?php echo $data['name'] ?></h3>
+                                <div class="tobuy  w-[100%]">
+                                <div class="text-red flex-row justify-between items-start">
 
-                <div class="info-product">
-                    <h3 class="font-bold"><?php echo $data['name'] ?></h3>
-                    <div class="tobuy">
-                        <div class="text-red flex-row justify-between">
-
-                            <i class="fa-solid fa-star text-yellow-500"></i>
-                            <i class="fa-solid fa-star  text-yellow-500"></i>
-                            <i class="fa-solid fa-star  text-yellow-500"></i>
-                            <i class="fa-solid fa-star  text-yellow-500"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <button class="price-btn bg-blue-700 rounded-md p-2 text-white font-bold"><span class="text-red-600"> -10% </span> <?= $data['prix_achat']; ?> $</button>
-                        <h3 class="font-semibold">Free Shipping</h3>
-                        <p><?php echo $data['description'] ?></p>
+                                    <i class="fa-solid fa-star text-yellow-500"></i>
+                                    <i class="fa-solid fa-star  text-yellow-500"></i>
+                                    <i class="fa-solid fa-star  text-yellow-500"></i>
+                                    <i class="fa-solid fa-star  text-yellow-500"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <button class="price-btn bg-blue-700 rounded-md p-2 text-white font-bold"><span class="text-red-600"> -10% </span> <?= $data['prix_achat']; ?> $</button>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-center items-center w-full ">
+                                <h3 class="font-semibold text-green-500 ml-2 mb-2">Free Shipping</h3>
+                                <p class="border-2 border-gray-400 bg-gray-300 rounded p-2 w-11/12 h-44"><?php echo $data['description'] ?></p>
+                            </div>
+                       
                     </div>
-                </div>
+                    </div>
             </div>
+            
             <div class="receipt rounded p-2 ">
-                <p class="font-5/16 font-bold text-6xl"><?= $data['prix_achat']; ?> $</p>
-                <p class="text-green-600 font-medium ">In stock</p>
+                <p class="font-5/16 font-bold text-6xl border-2 border-green-500 rounded p-1"><?= $data['prix_achat']; ?> $</p>
+                <p class="text-white font-medium bg-green-500 p-1  rounded ">In stock</p>
                 <p class="text-base">delevery December 21 - 28</p>
                 <form action="<?php echo URLROOT . '/products/addToCart/'. $data['id']; ?>" method="POST">
                     <select name="quantite" value="quantite" class="text-center border-blue-800 rounded p-1 text-black">
@@ -61,32 +99,12 @@
                             <option value="<?= $i; ?>"><?= $i; ?></option>
                         <?php } ?>
                     </select>
-                    <button class="border-solid border-2 border-blue-800 p-2 rounded-lg hover:bg-blue-700 hover:text-white"> add to cart</button>
+                    <button class="border-solid border-2 border-blue-800 p-2 rounded-lg bg-blue-700 hover:bg-blue-900 text-white"> add to cart</button>
                 </form>
                 
             </div>
         </div>
-        <div class=" w-8/12 m-6 ">
-            <p>About this item <br></p>
-            <div class="w-8/12 m-4 font-medium">
-                <li>
-                    IMPRESSIVE SOUND QUALITY: Riwbox XBT-80 is a bluetooth headphone features with a 50mm large diameter aperture drivers and bliit-in high detail microphone. Wide frequency range reproduces precise deep base and high clarity sound. You can expect comf
-                </li>
-                <li>
-                    BUILT TO STAY COMFORTABLE:The Memory-protein ear cushion simliate human skin texture, ensuring lasting comfort. The stainless steel slider and softly padded headband allows you to find the perfect fit without constraint and provide excellent durability.
-                </li>
-                <li>
-                    NEVER POWER OFF, BOTH WIRELESS & WIRED: 1. The wireless mode: A built-in 420mAh battery provides up to 13-hr music time/15-hr talking time in a single charge; 2. The Wired mode: you can also use it as a wired headphone with the provided audio cable so the headphones will never power off.
-                </li>
-                <li>
-                    TAKE YOUR TUNES TO GO: Space-saving foldable design not only saves space but also makes it portable. Best choice to take it study, out
-                </li>
-                <li>
-                    Riwbox Bluetooth headphones XBT-80 fit the modern city lifestyle for everybody, no matter you are office worker or student, teenager or girls.Devices with all sorts of smart phones, tablets, computer or music player.
-                </li>
-            </div>
-            <b>Note: Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this product may require an adapter or converter for use in your destination. Please check compatibility before purchasing.</b>
-        </div>
+        
     </section>
     <section>
         <footer class="footer">

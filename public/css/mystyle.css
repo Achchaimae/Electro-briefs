@@ -554,16 +554,16 @@ background: linear-gradient(90deg, rgba(118,118,252,1) 35%, rgba(167,240,255,1) 
 .price-btn{
   width: fit-content;
 }
-.info-product{
+/* .info-product{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   width: 70%;
   padding: 0.5rem 1rem;
-  /* background-color: #F1F0F0; */
+  /* background-color: #F1F0F0; 
   border-radius: 12px;
-}
+} µ */
 .tobuy{
   display: flex;
   flex-direction: column;
