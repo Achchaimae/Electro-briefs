@@ -30,8 +30,8 @@
 
 <body class="bg-blue-100 overflow-x-hidden">
     
-    <section class="cart-sec m-4 rounded p-4">
-        <div class="cart-info">
+    <section class="cart-sec m-4 rounded p-4 ">
+        <div class="cart-info w-1/2">
             <div class="ship-info ">
                 <h1 class="font-bold text-2xl">Shipping Address</h1><br>
                 <p><?= $data['name'] . ' ' . $data['prenom']; ?></p><br>
@@ -73,9 +73,9 @@
             </div>
 
 
-            <a href="<?= URLROOT . '/Products/cart';?>" id="orderNow" class="bg-blue-800 rounded-lg p-2 justify-center text-white" onclick="Swal.fire({ position: 'center ', icon: 'success', title: 'Your order has been saved', showConfirmButton: false, timer: 1500})">
+            <button id="orderNow" class="bg-blue-800 rounded-lg p-2 justify-center text-white" onclick="Swal.fire({ position: 'center ', icon: 'success', title: 'Your order has been saved', showConfirmButton: false, timer: 1000})">
                Place Order
-            </a>
+            </button>
 
         </div>
 
@@ -87,14 +87,8 @@
     let test;
     order.addEventListener('click', () => {
         test = setTimeout(() => {
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Your order has been saved',
-                showConfirmButton: false,
-                timer: 1500
-            })
-        }, 2000);
+            window.location.href = "<?= URLROOT; ?>/products/user";
+        }, 1200);
     });
 </script>
 

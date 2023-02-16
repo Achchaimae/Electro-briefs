@@ -224,9 +224,6 @@
                                 <th scope="col" class="py-3 px-6">
                                     status
                                 </th>
-                                <th scope="col" class="py-3 px-6">
-                                    Action
-                                </th>
                             </tr>
                         </thead>
                         <?php foreach ($data['commandes'] as $commande) : ?>
@@ -249,15 +246,11 @@
                                     <td class="py-4 px-6">
                                         <?php echo $commande->prix_total_commande; ?>
                                     </td>
-                                    <td class="py-4 px-6 text-blue-300">
-                                        <?php echo $commande->status; ?>
-                                    </td>
-                                    </td>
-                                    <td class="py-4 px-6">
-                                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Accept</a>
-                                    </td>
-                                    <td class="py-4 px-6">
-                                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Refuse</a>
+                                    <td class="py-4 px-6 text-blue-300 flex justify-between">
+                                        <?php if (empty($commande->status)) { ?>
+                                                <a href="<?= URLROOT . '/Commandes/accepted/' . $commande->id; ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Accept</a>
+                                                <a href="<?= URLROOT . '/Commandes/refused/ ' . $commande->id; ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Refuse</a>
+                                        <?php } else { echo $commande->status; }?>
                                     </td>
                                 </tr>
 

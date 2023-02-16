@@ -36,4 +36,22 @@
                 die('Something went wrong');
             }
         }
+     public function accepted($id){
+        $status=$this->commandemodels->Accept($id);
+        if($status){
+            redirect('commandes/dashboard');
+        }
+        else{
+            die('Something went wrong');
+        }
+     }
+     public function refused($id){
+        $status=$this->commandemodels->Refuse($id);
+        if($status){
+            redirect('commandes/dashboard');
+        }
+        else{
+            die('Something went wrong');
+        }
+     }
     }
