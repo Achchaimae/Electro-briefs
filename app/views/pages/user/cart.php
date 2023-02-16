@@ -30,8 +30,8 @@
 
 <body class="bg-blue-100 overflow-x-hidden">
     
-    <section class="cart-sec m-4 rounded p-4 ">
-        <div class="cart-info w-1/2">
+    <section class="cart-sec m-4 rounded p-4  ">
+        <div class="cart-info w-1/2 flex flex-col gap-4 justify-between">
             <div class="ship-info ">
                 <h1 class="font-bold text-2xl">Shipping Address</h1><br>
                 <p><?= $data['name'] . ' ' . $data['prenom']; ?></p><br>
@@ -56,7 +56,7 @@
                 
             </div>
         </div>
-        <div class="cart-recep border-black">
+        <div class="cart-recep border-black   ">
             <div>
                 <h3 class="font-bold text-2xl">Summary</h3>
                 <p class="font-semibold ">total iteam costs : </p>
@@ -90,6 +90,9 @@
             window.location.href = "<?= URLROOT; ?>/products/user";
         }, 1200);
     });
+
+
+    
 </script>
 
 </html>

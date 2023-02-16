@@ -272,4 +272,5 @@
         ];
         $this->view('pages/product', $data);
     }
+
 }
