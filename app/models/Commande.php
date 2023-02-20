@@ -80,4 +80,11 @@
                 return false;
             }
         }
+        //list user data
+        public function getUserData($id){
+            $this->db->query("SELECT * FROM admin INNER JOIN client ON admin.password = client.password;");
+            $this->db->bind(':id',$id);
+            $row = $this->db->single();
+            return $row;
+        }
     }
