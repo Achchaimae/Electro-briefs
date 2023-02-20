@@ -48,10 +48,6 @@
 
             $checkProductExist = $this->productmodels->getCart($id);
 
-            // echo '<pre>';
-            // print_r($cart);
-            // echo '<pre>';
-            // exit;
             if($checkProductExist->id_product == $id){
                  $data = [
                     'id' => $id,
@@ -272,5 +268,6 @@
         ];
         $this->view('pages/product', $data);
     }
+    
 
 }

@@ -80,4 +80,16 @@
     public function rowCount(){
       return $this->stmt->rowCount();
     }
+  //create new transaction 
+    public function beginTransaction() {
+      $this->dbh->beginTransaction();
+    }
+    //get the last inserted id
+    public function lastInserId() {
+        return $this->dbh->lastInsertId();
+    }
+    //if all is ok commit the transaction
+    public function commit() {
+        return $this->dbh->commit();
+    }
   }
