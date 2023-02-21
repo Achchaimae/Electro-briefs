@@ -268,6 +268,19 @@
         ];
         $this->view('pages/product', $data);
     }
-    
+    //delete from cart
+    public function deleteFromCart($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+            if ($this->productmodels->DeleteFromCart($id)) {
+                redirect('Products/cart');
+            } else {
+                die('Something went wrong');
+            }
+        } else {
+            redirect('Products/cart');
+        }
+    }
 
 }

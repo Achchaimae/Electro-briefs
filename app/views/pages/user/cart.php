@@ -43,26 +43,35 @@
              
         </nav>
     </section>
-    <section class="cart-sec m-4 rounded p-4  ">
+    <section class="cart-sec m-4 rounded p-4   flex-wrap">
         <div class="cart-info w-1/2 flex flex-col gap-4 justify-between">
-            <div class="ship-info ">
+            <div class="ship-info  ">
                 <h1 class="font-bold text-2xl">Shipping Address</h1><br>
-                <p><?= $data['name'] . ' ' . $data['prenom']; ?></p><br>
-                <p><?= $data['telephone'] ?></p><br>
-                <p><?= $data['adresse'] ?></p><br>
-                <p> <?= $data['adresse'] . ', ' . $data['ville']; ?></p>
+                <p></p>
+                <p class="bg-blue-300 p-2 rounded "> <?= $data['name'] . ' ' . $data['prenom']; ?></p><br>
+                <p class="bg-blue-300 p-2 rounded "><?= $data['telephone'] ?></p><br>
+                <p class="bg-blue-300 p-2 rounded "><?= $data['adresse'] ?></p><br>
+                <p class="bg-blue-300 p-2 rounded "> <?= $data['adresse'] . ', ' . $data['ville']; ?></p>
             </div>
             <div class="product-buy">
+                <h2 class="font-bold ">My product :</h2>
                 <?php foreach ($data['cart'] as $cart) : ?>
-                    <div class="my-price">
+                    <div class="my-price bg-blue-300 justify-around mb-3 ">
                         <img src="<?= URLROOT . '/img/upload/' . $cart->image; ?>" alt="produit">
                         <div>
                             <h3><?= $cart->libelle ?></h3>
-                            <div class="more-pro">
+                            <div class="more-pro flex justify-around">
                                 <button class="minus bg-blue-800 text-white" >-</button>
                                 <input type="text" class="quantite w-12" readonly disabled value="<?= $cart->quantite_c ?>">
                                 <button class="plus bg-blue-800 text-white" >+</button>
+                                <div onclick="deletecheck()">
+                                    <a href="<?= URLROOT . '/products/deleteFromCart/' . $cart->id; ?>">
+                                        <i class="fa-solid fa-trash text-red-500"></i>
+                                    </a>
+                               
+                                </div>
                             </div>
+                           
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -97,6 +106,13 @@
         </div>
 
     </section>
+    <section class="flex  justify-center">
+        <button  class="bg-blue-200 p-2 px-4 border-solid border-2 border-white text-white drop-shadow-sm shadow-md  rounded-3xl">
+            <a href="<?= URLROOT ;?>/products/user">
+            back to shop
+            </a>
+        </button>
+    </section>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
@@ -107,6 +123,26 @@
             window.location.href = "<?= URLROOT; ?>/products/user";
         }, 1200);
     });
+
+    function deletecheck() {
+            Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                        )
+                    }
+                    })
+        }
     
 </script>
 <script type="text/javascript">

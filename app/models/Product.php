@@ -142,6 +142,16 @@
         $row = $this->db->single();
         return $row;
     }
+    //delete from cart
+    public function DeleteFromCart($id) {
+        $this->db->query("DELETE FROM cart WHERE id_product = :id");
+        $this->db->bind(':id', $id);
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
  }
 
 

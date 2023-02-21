@@ -43,7 +43,7 @@
                 </a>
             </div>
             <div>
-                <a href="View/cart.php">
+                <a href="<?=URLROOT ;?>/Products/cart">
                     <i class="fa-solid fa-cart-shopping"></i>
                 </a>
             </div>
@@ -77,7 +77,7 @@
           faster. You can change the text and images and you're good to
           go. Just make sure you enable them first via JavaScript.
         </p>
-        <a href="../index.html" class="font-bold text-blueGray-700 mt-8">Check Notus JS!</a>
+        <a href="<?=URLROOT ;?>/pages/index" class="font-bold text-blueGray-700 mt-8">Check Notus JS!</a>
       </div>
       <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
         <div class="relative flex flex-col min-w-0 break-words w-full mb-2 shadow-lg rounded-lg bg-pink-500">

@@ -47,7 +47,7 @@
                 </a>
             </div>
             <div>
-                <a href="View/cart.php">
+                <a href="<?=URLROOT ;?>/Products/cart">
                     <i class="fa-solid fa-cart-shopping"></i>
                 </a>
             </div>
