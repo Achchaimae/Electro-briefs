@@ -20,27 +20,29 @@
 </head>
 
 <body class="bg-blue-100 ">
-    <section class="hero">
+<section class="hero">
         <div class="flex flex-row gap-4 items-center">
             <div class="logo ">
-                <a href="#"><img src="<?= URLROOT; ?>/img/mobile logo.png" alt="logo"></a>
+                <a href="<?= URLROOT ;?>/pages/index">
+                    <img src="<?= URLROOT; ?>/img/mobile logo.png" alt="logo">
+                </a>
             </div>
             <div class="flex flex-row gap-4">
                 <div>
-                    <b><a href="<?= URLROOT; ?>/products/user">categorie</a></b>
+                    <b><a href="<?= URLROOT ;?>/products/user">categorie</a></b>
                 </div>
                 <div>
                     <b><a href="View/Contact.php">Contact Us</a></b>
                 </div>
                 <div>
-                    <b><a href="View/AboutUs.php">About Us</a></b>
+                    <b><a href="<?= URLROOT; ?>/pages/AboutUs">About Us</a></b>
                 </div>
             </div>
 
         </div>
         <div class="icons">
             <div class="icon-item">
-                <a href="<?= URLROOT; ?>/autho/login">
+                <a href=" <?= URLROOT; ?>/autho/login">
                     <i class="fa-solid fa-user"></i>
                 </a>
             </div>

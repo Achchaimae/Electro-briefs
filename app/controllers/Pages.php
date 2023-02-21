@@ -19,6 +19,13 @@
 
       $this->view('pages/product', $data);
     }
+    public function AboutUs(){
+      $data = [
+        'title' => 'About Us',
+      ];
+
+      $this->view('pages/aboutUs', $data);
+    }
     
     
     

@@ -14,7 +14,7 @@
     <title>home</title>
 </head>
 
-<body>
+<body class="bg-blue-100 ">
     <section class="hero">
         <div class="flex flex-row gap-4 items-center">
             <div class="logo ">
@@ -28,7 +28,7 @@
                     <b><a href="View/Contact.php">Contact Us</a></b>
                 </div>
                 <div>
-                    <b><a href="View/AboutUs.php">About Us</a></b>
+                    <b><a href="<?= URLROOT; ?>/pages/AboutUs">About Us</a></b>
                 </div>
             </div>
 
