@@ -28,7 +28,7 @@
                     <b><a href="<?= URLROOT ;?>/products/user">categorie</a></b>
                 </div>
                 <div>
-                    <b><a href="View/Contact.php">Contact Us</a></b>
+                    <b><a href="<?= URLROOT; ?>/pages/ContactUs">Contact Us</a></b>
                 </div>
                 <div>
                     <b><a href="<?= URLROOT; ?>/pages/AboutUs">About Us</a></b>
@@ -48,7 +48,7 @@
                 </a>
             </div>
         </div>
-    </section>
+</section>
 <section class=" bg-blueGray-200 -mt-24">
   <div class="container mx-auto px-4">
     <div class="flex flex-wrap">

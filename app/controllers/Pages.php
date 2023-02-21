@@ -26,6 +26,13 @@
 
       $this->view('pages/aboutUs', $data);
     }
+    public function ContactUs(){
+      $data = [
+        'title' => 'Contact Us',
+      ];
+
+      $this->view('pages/contactUs', $data);
+    }
     
     
     

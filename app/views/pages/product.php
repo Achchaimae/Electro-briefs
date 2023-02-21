@@ -32,7 +32,7 @@
                     <b><a href="<?= URLROOT ;?>/products/user">categorie</a></b>
                 </div>
                 <div>
-                    <b><a href="View/Contact.php">Contact Us</a></b>
+                    <b><a href="<?= URLROOT; ?>/pages/ContactUs">Contact Us</a></b>
                 </div>
                 <div>
                     <b><a href="<?= URLROOT; ?>/pages/AboutUs">About Us</a></b>
