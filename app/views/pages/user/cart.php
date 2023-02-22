@@ -56,18 +56,20 @@
             <div class="product-buy">
                 <h2 class="font-bold ">My product :</h2>
                 <?php foreach ($data['cart'] as $cart) : ?>
-                    <div class="my-price bg-blue-300 justify-around mb-3 ">
+                    <div class="items my-price bg-blue-300 justify-around mb-3">
                         <img src="<?= URLROOT . '/img/upload/' . $cart->image; ?>" alt="produit">
                         <div>
                             <h3><?= $cart->libelle ?></h3>
                             <div class="more-pro flex justify-around">
+                                <input type="text" class="id" value="<?= $cart->id ?>" hidden>
                                 <button class="minus bg-blue-800 text-white" >-</button>
                                 <input type="text" class="quantite w-12" readonly disabled value="<?= $cart->quantite_c ?>">
+                                <input type="text" class="price w-12" readonly disabled value="<?= $cart->prix_achat ?>" hidden>
                                 <button class="plus bg-blue-800 text-white" >+</button>
                                 <div onclick="deletecheck()">
-                                    <a href="<?= URLROOT . '/products/deleteFromCart/' . $cart->id; ?>">
+                                    <button id="deleteBtn">
                                         <i class="fa-solid fa-trash text-red-500"></i>
-                                    </a>
+                                    </button>
                                
                                 </div>
                             </div>
@@ -83,21 +85,14 @@
                 <div>
                     <h3 class="font-bold text-2xl">Summary</h3>
                     <p class="font-semibold ">total iteam costs : </p>
-                    <div class="flex flex-col items-center">
-                            <?php foreach ($data['cart'] as $cart) : ?>
-                                <p><?= $cart->quantite_c; ?> qty x <?= $cart->prix_final; ?></p> <br>
-                                <input type="text" name="products[]" value="<?= $cart->id; ?>" hidden>
-                                <input type="text" name="quantity[]" value="<?= $cart->quantite_c; ?>" hidden>
-                            <?php endforeach ?>
-                        
+                    <div class="flex flex-col items-center" id="summary">
+                        <!-- items -->
                     </div>
                     <hr>
                     <div class="my-price">
-                        <p>total</p>
-                        <p><?= $data['total_price']; ?></p>
+                        <p id="total">Total : </p>
                     </div>
                 </div>
-
 
                 <button id="orderNow" class="bg-blue-800 rounded-lg p-2 justify-center text-white" onclick="Swal.fire({ position: 'center ', icon: 'success', title: 'Your order has been saved', showConfirmButton: false, timer: 1000})">
                 Place Order
@@ -124,55 +119,146 @@
         }, 1200);
     });
 
-    function deletecheck() {
-            Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                    }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                        )
-                    }
-                    })
-        }
+    let deleteBtn = document.getElementById('deleteBtn');
+    deleteBtn.addEventListener('click', () => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                );
+                delet = setTimeout(() => {
+                    window.location.href = "<?= URLROOT . '/products/deleteFromCart/' . $cart->id; ?>";
+                }, 1000);
+            }
+            })
+    });
+    // function deletecheck() {
+    //         Swal.fire({
+    //                 title: 'Are you sure?',
+    //                 text: "You won't be able to revert this!",
+    //                 icon: 'warning',
+    //                 showCancelButton: true,
+    //                 confirmButtonColor: '#3085d6',
+    //                 cancelButtonColor: '#d33',
+    //                 confirmButtonText: 'Yes, delete it!'
+    //                 }).then((result) => {
+    //                 if (result.isConfirmed) {
+    //                     Swal.fire(
+    //                     'Deleted!',
+    //                     'Your file has been deleted.',
+    //                     'success'
+    //                     )
+    //                 }
+    //                 })
+    //     }
     
 </script>
 <script type="text/javascript">
-    //add more or less
-    let plus = document.querySelectorAll('.plus');
-    let minus = document.querySelectorAll('.minus');
-    let quantite = document.querySelectorAll('.quantite');
+    // //add more or less
+    // let plus = document.querySelectorAll('.plus');
+    // let minus = document.querySelectorAll('.minus');
+    // let quantite = document.querySelectorAll('.quantite');
 
-    //function click to add more
-    plus.forEach((plus) => {
-        plus.addEventListener('click', () => {
-            let input = plus.previousElementSibling;
-            let value = parseInt(input.value);
-            value = isNaN(value) ? 0 : value;
-            value++;
-            input.value = value;
-        });
-    });
-    //function click to add less
-    minus.forEach((minus) => {
-        minus.addEventListener('click', () => {
-            let input = minus.nextElementSibling;
-            let value = parseInt(input.value);
-            value = isNaN(value) ? 0 : value;
-            value < 1 ? value = 1 : '';
-            value--;
-            input.value = value;
-        });
-    });
+    // //function click to add more
+    // plus.forEach((plus) => {
+    //     plus.addEventListener('click', () => {
+    //         let input = plus.previousElementSibling;
+    //         let value = parseInt(input.value);
+    //         value = isNaN(value) ? 0 : value;
+    //         value++;
+    //         input.value = value;
+    //     });
+    // });
+    // //function click to add less
+    // minus.forEach((minus) => {
+    //     minus.addEventListener('click', () => {
+    //         let input = minus.nextElementSibling;
+    //         let value = parseInt(input.value);
+    //         value = isNaN(value) ? 0 : value;
+    //         value < 1 ? value = 1 : '';
+    //         value--;
+    //         input.value = value;
+    //     });
+    // });
     
+</script>
+
+<script>
+
+    let summary = document.getElementById('summary');
+    let items = document.querySelectorAll('.items');
+    let total = document.getElementById('total');
+    let totalPrix = 0;
+
+    for (let i = 0; i < items.length; i++) {
+        let quantite = items[i].querySelector('.quantite').value;
+        let id = items[i].querySelector('.id').value;
+        let price = items[i].querySelector('.price').value;
+        let plus = items[i].querySelector('.plus');
+        let minus = items[i].querySelector('.minus');
+        let totalPrice = quantite * price;
+        totalPrix += totalPrice;
+
+        minus.addEventListener('click', _ => {
+            console.log(minus.nextElementSibling.value--);
+            quantite--;
+            if (minus.nextElementSibling.value < 1) {
+                minus.nextElementSibling.value = 1;
+            }
+            if (quantite < 1) {
+                quantite = 1;
+            }
+        });
+
+        plus.addEventListener('click', _ => {
+            plus.previousElementSibling.previousElementSibling.value++;
+            quantite++;
+            quantite;
+        });
+        
+        summary.innerHTML += `
+                            <p>${quantite} qty x ${price}</p> <br>
+                            <input type="text" name="products[]" value="${id}" hidden>
+                            <input type="text" name="quantity[]" value="${quantite}" hidden>
+                        `;
+
+        total.textContent = `Total : ${totalPrix}`; 
+
+    }
+
+    // //function click to add more
+    // plus.forEach((plus) => {
+    //     plus.addEventListener('click', () => {
+    //         let input = plus.previousElementSibling;
+    //         let value = parseInt(input.value);
+    //         value = isNaN(value) ? 0 : value;
+    //         value++;
+    //         input.value = value;
+    //     });
+    // });
+    // //function click to add less
+    // minus.forEach((minus) => {
+    //     minus.addEventListener('click', () => {
+    //         let input = minus.nextElementSibling;
+    //         let value = parseInt(input.value);
+    //         value = isNaN(value) ? 0 : value;
+    //         value < 1 ? value = 1 : '';
+    //         value--;
+    //         input.value = value;
+    //     });
+    // });
+    
+
 </script>
 
 </html>

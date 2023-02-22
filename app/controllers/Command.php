@@ -13,6 +13,8 @@
         }
         
         public function sendCommande() {
+            // print_r($_POST);
+            // exit;
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $products = $_POST['products'];
                 $quantity = $_POST['quantity'];
