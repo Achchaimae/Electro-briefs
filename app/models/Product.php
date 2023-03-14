@@ -137,6 +137,16 @@
             return false;
         }
     }
+    public function updateProductCart($data) {
+        $this->db->query("UPDATE cart SET quantite_c = :quantite WHERE id_product = :id");
+        $this->db->bind(':quantite', $data['quantite']);
+        $this->db->bind(':id', $data['id_product']);
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public function totalPrice() {
         $this->db->query("SELECT SUM(quantite_c * prix_final) AS total FROM cart INNER JOIN product ON cart.id_product = product.id;");
         $row = $this->db->single();

@@ -55,29 +55,34 @@
             </div>
             <div class="product-buy">
                 <h2 class="font-bold ">My product :</h2>
-                <?php foreach ($data['cart'] as $cart) : ?>
-                    <div class="items my-price bg-blue-300 justify-around mb-3">
-                        <img src="<?= URLROOT . '/img/upload/' . $cart->image; ?>" alt="produit">
-                        <div>
-                            <h3><?= $cart->libelle ?></h3>
-                            <div class="more-pro flex justify-around">
-                                <input type="text" class="id" value="<?= $cart->id ?>" hidden>
-                                <button class="minus bg-blue-800 text-white" >-</button>
-                                <input type="text" class="quantite w-12" readonly disabled value="<?= $cart->quantite_c ?>">
-                                <input type="text" class="price w-12" readonly disabled value="<?= $cart->prix_achat ?>" hidden>
-                                <button class="plus bg-blue-800 text-white" >+</button>
-                                <div onclick="deletecheck()">
-                                    <button id="deleteBtn">
-                                        <i class="fa-solid fa-trash text-red-500"></i>
-                                    </button>
-                               
+                <form action="<?= URLROOT ;?>/Command/updateProductCart" method="POST" class="w-full">
+                    <?php foreach ($data['cart'] as $cart) : ?>
+                        <div class="items my-price bg-blue-300 justify-around mb-3">
+                            <img src="<?= URLROOT . '/img/upload/' . $cart->image; ?>" alt="produit">
+                            <div>
+                                <h3><?= $cart->libelle ?></h3>
+                                <div class="more-pro flex justify-around">
+                                    <input type="text" name="id[]" class="id" value="<?= $cart->id ?>" hidden>
+                                    <span><?= $cart->prix_achat ?> $</span>
+                                    <input type="text" name="prix_achat" class="price w-12" value="<?= $cart->prix_achat ?>" hidden>
+                                    <button class="minus bg-blue-800 text-white" >-</button>
+                                    <input type="text" name="qte[]" class="quantite w-12" value="<?= $cart->quantite_c ?>">
+                                    <button class="plus bg-blue-800 text-white" >+</button>
+                                    <div onclick="deletecheck()">
+                                        <button id="deleteBtn">
+                                            <i class="fa-solid fa-trash text-red-500"></i>
+                                        </button>
+                                
+                                    </div>
                                 </div>
+                            
                             </div>
-                           
                         </div>
-                    </div>
-                <?php endforeach; ?>
-                
+                    <?php endforeach; ?>
+                    <button class="bg-blue-200 p-2 px-4 border-solid border-2 relative right-0 border-white w-24 mx-auto text-white drop-shadow-sm shadow-md  rounded-3xl">
+                            Update
+                    </button>
+                </form>
             </div>
         </div>
         <div class="cart-recep border-black">
@@ -120,7 +125,8 @@
     });
 
     let deleteBtn = document.getElementById('deleteBtn');
-    deleteBtn.addEventListener('click', () => {
+    deleteBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -209,21 +215,18 @@
         let totalPrice = quantite * price;
         totalPrix += totalPrice;
 
-        minus.addEventListener('click', _ => {
-            console.log(minus.nextElementSibling.value--);
-            quantite--;
+        minus.addEventListener('click', e => {
+            e.preventDefault();
+            minus.nextElementSibling.value--;
             if (minus.nextElementSibling.value < 1) {
                 minus.nextElementSibling.value = 1;
             }
-            if (quantite < 1) {
-                quantite = 1;
-            }
         });
 
-        plus.addEventListener('click', _ => {
-            plus.previousElementSibling.previousElementSibling.value++;
+        plus.addEventListener('click', e => {
+            e.preventDefault();
+            plus.previousElementSibling.value++;
             quantite++;
-            quantite;
         });
         
         summary.innerHTML += `
