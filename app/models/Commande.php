@@ -34,10 +34,10 @@
 
         public function createCommande($data) {
             $this->db->beginTransaction();
-            $this->db->query("INSERT INTO commande(client_id , date_creation ) VALUES (:id_c, :date)");
+            $this->db->query("INSERT INTO commande(client_id , date_creation, prix_total_commande ) VALUES (:id_c, :date, :total_price)");
             $this->db->bind(':id_c', $data['id_client']);
             $this->db->bind(':date', $data['creation_date']);
-            // $this->db->bind(':total_price', $data['total_price']);
+            $this->db->bind(':total_price', $data['total_price']);
             $this->db->execute();
             return $this->db->lastInserId();
         }
@@ -58,11 +58,23 @@
             return $this->db->commit();
         }
 
-        // public function totalPrice() {
-        //     $this->db->query("SELECT SUM(p.selling_price * pc.quantite) as price FROM product_commande pc JOIN product p ON p.id_p = pc.id_product JOIN commande c ON c.id = pc.id_commande GROUP BY id_commande");
-        //     $row = $this->db->single();
-        //     return $row;
-        // }
+        public function updateTotalPrice($total, $idCommande) {
+            $this->db->query("UPDATE commande SET prix_total_commande = :total_price WHERE id = :id");
+            $this->db->bind(':id', $idCommande);
+            $this->db->bind(':total_price', $total);
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function totalPrice($id) {
+            $this->db->query("SELECT SUM(p.prix_achat * pc.qte) as total_price FROM product_commande pc JOIN product p ON p.id = pc.id_product JOIN commande c ON c.id = pc.id_commande WHERE c.id = :id GROUP BY id_commande");
+            $this->db->bind(':id', $id);
+            $row = $this->db->single();
+            return $row;
+        }
 
         public function clearCart() {
             $this->db->query("DELETE FROM cart");

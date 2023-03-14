@@ -13,16 +13,13 @@
         }
         
         public function sendCommande() {
-            // print_r($_POST);
-            // exit;
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $products = $_POST['products'];
                 $quantity = $_POST['quantity'];
-                // $total = $this->commandeModel->totalPrice();
                 $data = [
                     'id_client' => $_SESSION['user_id'],
                     'creation_date' => date('d-m-y'),
-                    // 'total_price' => $total->price
+                    'total_price' => 0
                 ];
                 $idCommande = $this->productmodels->createCommande($data);
                 if ($idCommande) {
@@ -34,7 +31,12 @@
                         ];
                         $this->productmodels->addProductCommande($data);
                     }
+
                     if ($this->productmodels->finishCommande()) {
+                        $total = $this->productmodels->totalPrice($idCommande);
+                        $data['total_price'] = $total->total_price;
+                        $this->productmodels->updateTotalPrice($data['total_price'], $idCommande);
+
                         $this->productmodels->clearCart();
                         redirect('Products/cart');
                     } else {

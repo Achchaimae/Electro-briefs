@@ -215,12 +215,7 @@
                                 <th scope="col" class="py-3 px-6">
                                     client
                                 </th>
-                                <th scope="col" class="py-3 px-6">
-                                    Category
-                                </th>
-                                <th scope="col" class="py-3 px-6">
-                                    Price
-                                </th>
+                                
                                 <th scope="col" class="py-3 px-6">
                                     total price
                                 </th>
@@ -239,13 +234,6 @@
                                         <?php echo $commande->client_id; ?>
                                     </td>
 
-                                    <td class="py-4 px-6">
-                                        <?php echo $commande->prix_unitaire; ?>
-                                    </td>
-
-                                    <td class="py-4 px-6">
-                                        <?php echo $commande->quantite; ?>
-                                    </td>
                                     <td class="py-4 px-6">
                                         <?php echo $commande->prix_total_commande; ?>
                                     </td>
